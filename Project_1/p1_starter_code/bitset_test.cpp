@@ -13,4 +13,3 @@ TEST_CASE( "Test bitset construction", "[bitset]" ) {
     REQUIRE(b.size() == 8);
     REQUIRE(b.good());
 }
-

@@ -17,6 +17,7 @@ public:
   // TODO COMMENT
   ~Bitset();
 
+  //I'm pretty sure this just prevents us from being able to copy the class?
   Bitset(const Bitset & ) = delete;
   Bitset & operator=(const Bitset &) = delete;
 
@@ -44,6 +45,10 @@ public:
 private:
 
   // TODO
+  u_int8_t *bits;
+  int N;
+  bool valid = true;
+
 };
 
 #endif
