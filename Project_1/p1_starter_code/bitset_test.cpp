@@ -42,73 +42,128 @@ TEST_CASE( "Bitset(const std::string & value)", "[bitset]" ) {
         Bitset b(binary);
         SECTION("binary = " + binary + " = " + std::to_string(i) + " = " + b.asString()) {
             for (int j=0;j<8;j++) {
-                SECTION("j = " + std::to_string(j))
-                REQUIRE(b.test(j) == static_cast<bool>(binary.at(j)));
+                REQUIRE(b.test(j) == static_cast<bool>(std::stoi(binary.substr(j,1))));
             }
         }
         n = ++i;
     } while (binary != "11111111");
 }
 
-/*
 TEST_CASE( "~Bitset()", "[bitset]" ) {
     int max = 20;
     for (int i=0;i<max;i++){
         Bitset b(i);  
         b.~Bitset();
         REQUIRE(b.size() == 0);
-        for (int j=0;j<8;j++) {
-            REQUIRE(b.test(j) != 0);
+    }
+}
+
+TEST_CASE( "intmax_t size() const", "[bitset]" ) {
+    int max = 20;
+    for (int i=0;i<max;i++){
+        Bitset b(i);
+        REQUIRE(b.size() == i);
+        REQUIRE(b.good());
+        for (int j=0;j<i;j++) {
+            REQUIRE(b.test(j) == 0);
         }
     }
 }
-*/
-
-TEST_CASE( "intmax_t size() const", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
-}
 
 TEST_CASE( "bool good() const", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+    std::string str;
+    for (int i=0;i<8;i++) {
+        str = "00000000";
+        str.replace(i,1,"1");
+        SECTION("str = " + str) {
+            Bitset b(str);
+            REQUIRE(b.good() == true);
+        }
+    }
+    for (int i=0;i<8;i++) {
+        str = "00000000";
+        str.replace(i,1,"2");
+        SECTION("str = " + str) {
+            Bitset b(str);
+            REQUIRE(b.good() == false);
+        }
+    }
+    int max = 10;
+    for (int i=0;i<2*max;i++) {
+        Bitset b(max);
+        b.set(i);
+        REQUIRE(b.good() == (i<max));
+    }
+    for (int i=0;i<2*max;i++) {
+        Bitset b(max);
+        b.reset(i);
+        REQUIRE(b.good() == (i<max));
+    }
+    for (int i=0;i<2*max;i++) {
+        Bitset b(max);
+        b.toggle(i);
+        REQUIRE(b.good() == (i<max));
+    }
 }
 
 TEST_CASE( "void set(intmax_t index)", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+    for (int i=0;i<8;i++) {
+        Bitset b;  
+        b.set(i);
+        for (int j=0;j<8;j++) {
+            REQUIRE(b.test(j)==(i==j));
+        }
+    }
 }
 
 TEST_CASE( "void reset(intmax_t index)", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+    for (int i=0;i<8;i++) {
+        Bitset b("11111111");
+        b.reset(i);
+        for (int j=0;j<8;j++) {
+            REQUIRE(b.test(j)==(i!=j));
+        }
+    }
 }
 
 TEST_CASE( "void toggle(intmax_t index)", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+    for (int i=0;i<8;i++) {
+        Bitset b;  
+        b.toggle(i);
+        for (int j=0;j<8;j++) {
+            REQUIRE(b.test(j)==(i==j));
+        }
+    }
+    for (int i=0;i<8;i++) {
+        Bitset b("11111111");
+        b.toggle(i);
+        for (int j=0;j<8;j++) {
+            REQUIRE(b.test(j)==(i!=j));
+        }
+    }
 }
 
 TEST_CASE( "bool test(intmax_t index)", "[bitset]" ) {
-
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+    Bitset b("10101010");
+    for (int i=0;i<8;i++) {
+        REQUIRE(b.test(i)==(i%2==0));
+    }
 }
 
 TEST_CASE( "std::string asString() const", "[bitset]" ) {
+    int n = 0,i = 0;
+    std::string binary;
+    do {
+        binary = "00000000";
+        for (int j=0;j<8;j++) {
+            if (n%2==1) binary.replace(7-j,1,"1");
+            n/=2;
+        }
 
-    Bitset b;  
-    REQUIRE(b.size() == 8);
-    REQUIRE(b.good());
+        Bitset b(binary);
+        SECTION("binary = " + binary + " = " + std::to_string(i) + " = " + b.asString()) {
+            REQUIRE(b.asString() == binary);
+        }
+        n = ++i;
+    } while (binary != "11111111");
 }

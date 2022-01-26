@@ -1,4 +1,5 @@
 #include "bitset.hpp"
+#include <iostream>
 
   //default construction of a valid bitset of size 8, with all bits set to 0    
   Bitset::Bitset() {
@@ -23,8 +24,9 @@
       N = 8;
       bits = new u_int8_t[N];
       for (int i=0;i<N;i++) {
-          int bit = static_cast<int>(value.at(i));
-          if (bit != 0 || bit != 1) valid = false;
+          int bit;
+          bit = std::stoi(value.substr(i,1));
+          if (bit != 0 && bit != 1) valid = false;
           bits[i] = bit;
       }
   }
@@ -48,7 +50,6 @@
 
   //a method to set the nth bit to 1, and if n is not in [0, N-1] then the bitset becomes invalid
   void Bitset::set(intmax_t index) {
-      
       if (index < 0 || index > (N-1)) {
           valid = false;
       } else {
@@ -74,20 +75,22 @@
       }
   }
 
+  //a method to check if the nth bit is set (1) by returning a bool value of true if set and false
+  //if not, and if n is not in [0, N-1] then the bitset becomes invalid and false is returned
   bool Bitset::test(intmax_t index) {
-      //a method to check if the nth bit is set (1) by returning a bool value of true if set and false
-      //if not, and if n is not in [0, N-1] then the bitset becomes invalid and false is returned
-      if (index < 0 || index > (N-1)) valid = false;
-      return bits[index];
+      if (index < 0 || index > (N-1)) {
+          valid = false;
+          return -1;
+      } else {
+          return bits[index];
+      }
   }
 
+  //a method to return the bitset as a std::string of characters 0 and 1. This string should
+  //represent the bitset digits from left-to-right with the most significant bit first.
   std::string Bitset::asString() const {
-      //a method to return the bitset as a std::string of characters 0 and 1. This string should
-      //represent the bitset digits from left-to-right with the most significant bit first.
       std::string bitStr;
-      for (int i=0;i<N;i++) {
-          char bit = static_cast<char>(bits[i]);
-          bitStr += bit;
-      }
+      for (int i=0;i<N;i++)
+          bitStr.append((bits[i]==0)?"0":"1");
       return bitStr;
   }
