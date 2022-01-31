@@ -12,6 +12,7 @@
   //construction of a valid bitset of size N, where N is of type intmax_t,
   //with all bits set to 0; the bitset is invalid if N <= 0.
   Bitset::Bitset(intmax_t size) {
+      if (size == 0) { valid = false; }
       N = size;
       bits = new u_int8_t[N];
       for (int i=0;i<N;i++)

@@ -26,9 +26,9 @@ TEST_CASE( "Bitset()", "[bitset]" ) {
 TEST_CASE( "Bitset(intmax_t size)", "[bitset]" ) {
     int max = 20;
     for (int i=0;i<max;i++){
-        Bitset b(i);  
+        Bitset b(i);
         REQUIRE(b.size() == i);
-        REQUIRE(b.good());
+        if (i==0) { REQUIRE(b.good() == false); }
         for (int j=0;j<i;j++) {
             REQUIRE(b.test(j) == 0);
         }
@@ -91,7 +91,11 @@ TEST_CASE( "intmax_t size() const", "[bitset]" ) {
     for (int i=0;i<max;i++){
         Bitset b(i);
         REQUIRE(b.size() == i);
-        REQUIRE(b.good());
+        if (i==0) { 
+            REQUIRE(b.good() == false);
+        } else {
+            REQUIRE(b.good());
+        }
         for (int j=0;j<i;j++) {
             REQUIRE(b.test(j) == 0);
         }
