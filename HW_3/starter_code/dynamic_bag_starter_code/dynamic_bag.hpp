@@ -4,8 +4,11 @@
 #include "abstract_bag.hpp"
 
 template <typename T>
-class DynamicBag: public AbstractBag<T>
-{
+class DynamicBag: public AbstractBag<T> {
+  private:
+    T *items;
+    int bagSize;
+    
 public:
   // default constructor
   DynamicBag();
@@ -39,10 +42,6 @@ public:
 
   // check if item is in the bag
   bool contains(const T& item) const;
-
-private:
-
-  // TODO
 };
 
 #include "dynamic_bag.tpp"
