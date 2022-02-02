@@ -1,0 +1,29 @@
+/** 
+* binarySearch() searches through a list of strings sorted alphabetically
+* @pre First <= 0, last <= n-1, where n is the maximum size of the array
+* @post Array A is unchanged
+* @param A The array to search through
+* @param first The index at which to start searching through the array
+* @param last The index at which to stop searching through the array
+* @param target The string to find
+* @return binarySearch() returns the index of the string or -1 if the value cannot be found
+* @date   2/2/2022
+*/
+
+int binarySearch (const string A[], int first, int last, string target)
+{
+	int index = 0;
+	if (first > last) 
+		index = -1; // target not in the original array
+	else
+{
+		int mid = first + (last - first)/2;		// If target is in array, A[first] <= target <= A[last]
+		if (target == A[mid])
+			index = mid;		// target found at A[mid]
+		else if (target < A[mid])
+			index = binarySearch(A, first, mid-1, target);
+		else
+			index = binarySearch(A, mid+1, last, target);
+	}
+	return index;
+}
