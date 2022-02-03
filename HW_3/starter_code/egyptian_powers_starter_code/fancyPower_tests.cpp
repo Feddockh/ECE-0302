@@ -1,3 +1,14 @@
+/**
+ * @file fancyPower_tests.cpp
+ * @author Hayden Feddock
+ * @brief Method for "Egyptian Power" recursive calculations
+ * @version 0.1
+ * @date 2022-02-02
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 

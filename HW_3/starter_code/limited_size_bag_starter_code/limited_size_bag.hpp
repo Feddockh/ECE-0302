@@ -1,3 +1,14 @@
+/**
+ * @file limited_size_bag.hpp
+ * @author Hayden Feddock
+ * @brief LimitedSizeBag class header file
+ * @version 0.1
+ * @date 2022-02-02
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef LIMITED_SIZE_BAG_HPP
 #define LIMITED_SIZE_BAG_HPP
 
@@ -40,9 +51,11 @@ public:
   // check if item is in the bag
   bool contains(const T& item) const;
 
-private:
+  static const std::size_t MAXSIZE = 100;
 
-  // TODO
+private:
+  std::size_t size;
+  T items[MAXSIZE];
 };
 
 #include "limited_size_bag.tpp"

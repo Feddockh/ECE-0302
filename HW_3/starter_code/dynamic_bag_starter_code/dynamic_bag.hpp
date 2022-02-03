@@ -1,4 +1,14 @@
-#ifndef _DYNAMIC_BAG_HPP_
+/**
+ * @file dynamic_bag.hpp
+ * @author Hayden Feddock
+ * @brief DynamicBag class header file
+ * @version 0.1
+ * @date 2022-02-02
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #define _DYNAMIC_BAG_HPP_
 
 #include "abstract_bag.hpp"
