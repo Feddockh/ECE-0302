@@ -7,7 +7,11 @@ DynamicBag<T>::DynamicBag() {
 
 template<typename T>
 DynamicBag<T>::DynamicBag(const DynamicBag& x){
-
+  bagSize = x.getCurrentSize();
+  items = new T [bagSize];
+  for (int i=0;i<bagSize;i++) {
+    items[i] = x.items[i];
+  }
 }
 
 template<typename T>
@@ -16,56 +20,56 @@ DynamicBag<T>::~DynamicBag(){
   items = nullptr;
   bagSize = 0;
 }
-  
+
 template<typename T>
 DynamicBag<T>& DynamicBag<T>::operator=(DynamicBag<T>& x) {
   bagSize = x.getCurrentSize();
   items = new T [bagSize];
-  /*
   for (int i=0;i<bagSize;i++) {
-    items[i] = 
+    items[i] = x.items[i];
   }
-  */
   return *this;
 }
 
 template<typename T>
 bool DynamicBag<T>::add(const T& item) {
-  T *temp = items; // Create a new pointer to the old list of items
-  items = new T [bagSize+1]; // Create a new items pointer with the incremented bag size
+  int n = getFrequencyOf(item); // Count the current number of occurances for comparison later
 
-  int n = getFrequencyOf(item); //Count the current number of occurances for comparison later
+  T *temp = items; // Create a new pointer to the old list of items
+  items = nullptr; // Was this the answer?????????????????????????????????????????????????????????????!!!!!!!!!!
+  items = new T [bagSize+1]; // Create a new items pointer with the incremented bag size
 
   for (int i=0;i<bagSize;i++) { // Transfer over the old temp items to the new items pointer address
       items[i] = temp[i];
   }
   items[bagSize] = item; // Add in the new items to the items pointer
+  bagSize++; // Increment the bag size
 
   delete [] temp; // Delete the old temp items pointer
   temp = nullptr; // Cap the old temp items pointer
-  bagSize++; // Increment the bag size
 
-  return (getFrequencyOf(item) == n+1);
+  return (getFrequencyOf(item) == n+1); // Return true if an instance of item was added
 }
 
 template<typename T>
 bool DynamicBag<T>::remove(const T& item) {
+  int n = getFrequencyOf(item); // Count the current number of occurances for comparison later
+  if (n == 0) return false; // This will instantly return false if there are no occurances
+
+  bagSize--; // Decrease the bag size
   T *temp = items; // Create a new pointer to the old list of items
-  items = new T [bagSize-1]; // Create a new items pointer with the incremented bag size
-
-  int n = getFrequencyOf(item); //Count the current number of occurances for comparison later
-
-  for (int i=0;i<bagSize;i++) { // Transfer over the old temp items to the new items pointer address
-    if (temp[i] == item)
-      items[i] = temp[i];
+  items = nullptr; // Was this the answer?????????????????????????????????????????????????????????????!!!!!!!!!!
+  items = new T [bagSize]; // Create a new items pointer with the incremented bag size
+  
+  for (int i=0,skip=0;i<bagSize;i++) { // Transfer over the old temp items to the new items pointer address
+    if (temp[i] == item) skip = 1; // If the item matches an object in the old temp items pointer, set skip to 1
+    items[i] = temp[i+skip]; // Use the skip to offset the values being read from the temp pointer
   }
-  items[bagSize] = item; // Add in the new items to the items pointer
 
   delete [] temp; // Delete the old temp items pointer
   temp = nullptr; // Cap the old temp items pointer
-  bagSize++; // Increment the bag size
 
-  return !contains(entry);
+  return (getFrequencyOf(item) == n-1); // Return true if an instance of item was removed
 }
 
 template<typename T>
@@ -83,18 +87,19 @@ bool DynamicBag<T>::contains(const T& item) const {
   for (int i=0;i<bagSize;i++) {
     if (items[i] == item) return true;
   }
+  return false;
 }
 
 template<typename T>
 void DynamicBag<T>::clear(){
-  //set all items to 0
+  bagSize = 0;
 }
 
 template<typename T>
 std::size_t DynamicBag<T>::getFrequencyOf(const T & item) const {
   int n = 0;
     for (int i=0;i<bagSize;i++) {
-        if (items[i] == entry) n++;
+        if (items[i] == item) n++;
     }
   return n;
 };
