@@ -1,13 +1,14 @@
 /**
  * @file dynamic_bag.tpp
  * @author Hayden Feddock
- * @brief Methods of the DynamicBag class
+ * @brief 
  * @version 0.1
- * @date 2022-02-02
+ * @date 2022-02-06
  * 
  * @copyright Copyright (c) 2022
  * 
  */
+
 
 #include "dynamic_bag.hpp"
 

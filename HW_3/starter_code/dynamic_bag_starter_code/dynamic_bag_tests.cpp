@@ -1,14 +1,15 @@
 /**
  * @file dynamic_bag_tests.cpp
  * @author Hayden Feddock
- * @brief Tests for the DynamicBag class and it's methods
+ * @brief 
  * @version 0.1
- * @date 2022-02-02
+ * @date 2022-02-06
  * 
  * @copyright Copyright (c) 2022
  * 
  */
 
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
 #include "dynamic_bag.hpp"

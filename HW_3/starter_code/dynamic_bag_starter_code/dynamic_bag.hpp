@@ -1,57 +1,62 @@
 /**
  * @file dynamic_bag.hpp
  * @author Hayden Feddock
- * @brief DynamicBag class header file
+ * @brief 
  * @version 0.1
- * @date 2022-02-02
+ * @date 2022-02-06
  * 
  * @copyright Copyright (c) 2022
  * 
  */
 
+#ifndef _DYNAMIC_BAG_HPP_
 #define _DYNAMIC_BAG_HPP_
 
 #include "abstract_bag.hpp"
 
 template <typename T>
-class DynamicBag: public AbstractBag<T> {
-  private:
-    T *items;
-    int bagSize;
+class DynamicBag: public AbstractBag<T>
+{
+public:
+  // default constructor
+  DynamicBag();
+  
+  // copy constructor
+  DynamicBag(const DynamicBag& x);
     
-  public:
-    // default constructor
-    DynamicBag();
+  // destructor
+  ~DynamicBag();
+  
+  // copy assignment
+  DynamicBag& operator=(DynamicBag& x);
 
-    // copy constructor
-    DynamicBag(const DynamicBag& x);
-      
-    // destructor
-    ~DynamicBag();
+  // add an item to the bag
+  bool add(const T & item);
+  
+  // remove an item
+  bool remove(const T & item);
 
-    // copy assignment
-    DynamicBag& operator=(DynamicBag& x);
+  // check is the bag is empty
+  bool isEmpty() const;
 
-    // add an item to the bag
-    bool add(const T & item);
+  // get number of items in the bag
+  std::size_t getCurrentSize() const;
 
-    // remove an item
-    bool remove(const T & item);
+  // clear the bag contents
+  void clear();
 
-    // check if the bag is empty
-    bool isEmpty() const;
+  // count how many time item occurs in bag
+  std::size_t getFrequencyOf(const T & item) const;
 
-    // get number of items in the bag
-    std::size_t getCurrentSize() const;
+  // check if item is in the bag
+  bool contains(const T& item) const;
 
-    // clear the bag contents
-    void clear();
+private:
+  // Pointer to hold the bag of items
+  T *items;
 
-    // count how many time item occurs in bag
-    std::size_t getFrequencyOf(const T & item) const;
-
-    // check if item is in the bag
-    bool contains(const T& item) const;
+  // Integer to keep track of the size of the bag
+  int bagSize;
 };
 
 #include "dynamic_bag.tpp"
