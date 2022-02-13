@@ -47,7 +47,10 @@ public:
 
 private:
 
-  //TODO
+  // create the first node of the list
+  Node<T> *list;
+
+  size_t size;
   
 };
 
