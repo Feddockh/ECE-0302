@@ -82,6 +82,28 @@ TEST_CASE( "Insert", "[ArrayList]" ) {
       REQUIRE(list.getEntry(j)==j*5);
     }
   }
+
+  // Inserting into the middle
+  ArrayList<int> list2;
+  for (int i=1;i<=maxTests;i++) {
+    if (i==1) {
+      REQUIRE(list2.insert(1, 1));
+    } else {
+      REQUIRE(list2.insert(i/2, 1));
+    }
+    for (int j=1;j<=i;j++) {
+      REQUIRE(list2.getEntry(j)==1);
+    }
+  }
+
+  // Inserting onto the front
+  ArrayList<int> list3;
+  for (int i=1;i<=maxTests;i++) {
+    REQUIRE(list3.insert(1, i));
+    for (int j=1;j<=i;j++) {
+      REQUIRE(list3.getEntry(j)==i-j+1);
+    }
+  }
 }
 
 // removes items from the end, middle, and front of the list and tests them
