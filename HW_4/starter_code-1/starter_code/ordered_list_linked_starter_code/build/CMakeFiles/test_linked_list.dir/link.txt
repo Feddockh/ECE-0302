@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-g++-9  -g   CMakeFiles/test_linked_list.dir/test_linked_list.cpp.o  -o test_linked_list 

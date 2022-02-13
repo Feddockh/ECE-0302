@@ -1,3 +1,14 @@
+/**
+ * @file linked_list.hpp
+ * @author Hayden Feddock
+ * @brief header file for the linked list object
+ * @version 0.1
+ * @date 2022-02-13
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef _LINKED_LIST_HPP_
 #define _LINKED_LIST_HPP_
 
