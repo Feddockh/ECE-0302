@@ -28,37 +28,49 @@ TEST_CASE( "Test FindPalindrome add (string)", "[FindPalindrome]" )
 
 TEST_CASE("Test FindPalindrome add (vector string)", "[FindPalindrome]" ) {
 	FindPalindrome b;
-	std::vector<std::string> goodStringVector = {"Murder", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE(b.add(goodStringVector));
-	std::vector<std::string> badStringVector1 = {"Murder1", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE_FALSE(b.add(badStringVector1));
-	std::vector<std::string> badStringVector2 = {"Murder.", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE_FALSE(b.add(badStringVector2));
+	REQUIRE(b.add({"Murder", "for", "a", "jar", "of", "red", "rum"}));
+	REQUIRE_FALSE(b.add({"Murder1", "for", "a", "jar", "of", "red", "rum"}));
+	REQUIRE_FALSE(b.add({"Murder.", "for", "a", "jar", "of", "red", "rum"}));
 
 	//Test duplicate addition
-	std::vector<std::string> duplicateStringVector = {"Red", "rum", "sir", "is", "murder"};
-	REQUIRE_FALSE(b.add(duplicateStringVector));
+	REQUIRE_FALSE(b.add({"Red", "rum", "sir", "is", "murder"}));
 }
 
 TEST_CASE("Test FindPalindrome recursiveFindPalindromes", "[FindPalindrome]" ) {
 	FindPalindrome b;
-	std::vector<std::string> test = {"Murder", "for", "a", "jar", "of", "red", "rum"};
+	// Murder for a jar of red rum
+	std::vector<std::string> test = {"rum", "a", "jar", "Murder", "of", "red", "for"};
 	REQUIRE(b.add(test));
 	std::vector<std::vector<std::string>> result = b.toVector();
-	REQUIRE(result.front()==test);
+	std::vector<std::string> ans1 = {"Murder", "for", "a", "jar", "of", "red", "rum"};
+	REQUIRE(result.front() == ans1);
+	std::vector<std::string> ans2 = {"red", "rum", "for", "a", "jar", "of", "Murder"};
+	REQUIRE(result.back() == ans2);
+	REQUIRE(b.number()==2);
+
+	b.clear();
+	REQUIRE(b.number()==0);
 }
 
 TEST_CASE("Test cutTest1", "[FindPalindrome]" ) {
 	FindPalindrome b;
-	std::vector<std::string> goodTest1 = {"Murder", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE(b.cutTest1(goodTest1));
-	std::vector<std::string> badTest1 = {"Morder", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE_FALSE(b.cutTest1(badTest1));
-	std::vector<std::string> goodTest2 = {"Wonton", "not", "now"};
-	REQUIRE(b.cutTest1(goodTest2));
-	std::vector<std::string> badTest2 = {"Wnnton", "not", "now"};
-	REQUIRE_FALSE(b.cutTest1(badTest2));
+
+	REQUIRE(b.cutTest1({"Murder", "for", "a", "jar", "of", "red", "rum"}));
+	REQUIRE_FALSE(b.cutTest1({"Morder", "for", "a", "jar", "of", "red", "rum"}));
+	REQUIRE(b.cutTest1({"Wonton", "not", "now"}));
+	REQUIRE_FALSE(b.cutTest1({"Wnnton", "not", "now"}));
 }
+
+TEST_CASE("Test cutTest2", "[FindPalindrome]" ) {
+	FindPalindrome b;
+
+	REQUIRE(b.cutTest2({"Murder", "for", "a"}, {"jar", "of", "red", "rum"}));
+	REQUIRE_FALSE(b.cutTest2({"Murder", "for", "a"}, {"jar", "of", "red", "ram"}));
+	REQUIRE(b.cutTest2({"Wonton", "not"}, {"now"}));
+	REQUIRE_FALSE(b.cutTest2({"Monton", "not"}, {"now"}));
+}
+
+
 
 /*
 * Murder for a jar of red rum

@@ -27,11 +27,14 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
         candidateStringVector, vector<string> currentStringVector)
 {
 	// Create an int to keep track of our current string vector's size
-	int size = currentStringVector.size();
+	int vectorBagSize = currentStringVector.size();
+
+	// Implemet cut test 2 here to potentially save time
+	if (!cutTest2(candidateStringVector, currentStringVector));
 
 	// Loop through adding each of the string vectors to the candidate string vector
 	// The base case of the recursive call will skip past this loop because size = 0
-	for (int i=0;i<size;i++) {
+	for (int i=0;i<vectorBagSize;i++) {
 
 		// Create two new string vectors which we can modify and use
 		vector<string> newCandidateStringVector = candidateStringVector;
@@ -41,7 +44,7 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 		newCandidateStringVector.push_back(currentStringVector[i]);
 
 		// Copy over all elements but i to the new current string vector
-		for (int j=0;j<size;j++) {
+		for (int j=0;j<vectorBagSize;j++) {
 			if (j!=i) newCurrentStringVector.push_back(currentStringVector[j]);
 		}
 		
@@ -50,19 +53,19 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 	}
 
 	// Now we are past the function call and in the base case
-	if (size==0) {
+	if (vectorBagSize==0) {
 
 		//Implement cut test 1 here to potentially save time
 		if (!cutTest1(candidateStringVector)) return;
 
 		// We want to concatenate the candidate vector of strings that we have to a string
-		string candiate;
+		string candiateStr;
 		for (int i=0;i<candidateStringVector.size();i++) {
-			candiate.append(candidateStringVector[i]);
+			candiateStr.append(candidateStringVector[i]);
 		}
 
 		// If the candidate string is a palindrome, add it to the vector of vector strings
-		if (isPalindrome(candiate)) {
+		if (isPalindrome(candiateStr)) {
 			palindromesBag.push_back(candidateStringVector);
 			numberOfPalindromes++;
 		}
@@ -161,67 +164,42 @@ bool FindPalindrome::cutTest1(const vector<string> & stringVector)
 bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
                               const vector<string> & stringVector2)
 {
-
-	// All of the characters from the smaller string must appear in the larger one
 	// Determine which string is longer
-	int vectorSize1 = stringVector1.size();
-	int vectorSize2 = stringVector2.size();
-
-	// Find out which vector is longer
+	// Set longer and shorter strings with the concatenated strings from the vectors
 	string longStr, shortStr;
-	int longSize, shortSize;
-	if (vectorSize1>vectorSize2) {
-
-		// Make the long string from vector 1
-		longSize = vectorSize1;
-		for (int i=0;i<longSize;i++) {
-			longStr += stringVector1[i];
-		}
-
-		// Make the short string from vector 2
-		shortSize = vectorSize2;
-		for (int i=0;i<shortSize;i++) {
-			shortStr += stringVector2[i];
-		}
-
+	if (stringVector1.size()>stringVector2.size()) {
+		for (int i=0;i<stringVector1.size();i++) longStr += stringVector1[i];
+		for (int i=0;i<stringVector2.size();i++) shortStr += stringVector2[i];
 	} else {
-
-		// Make the long string from vector 2
-		longSize = vectorSize2;
-		for (int i=0;i<longSize;i++) {
-			longStr += stringVector2[i];
-		}
-
-		// Make the short string from vector 1
-		shortSize = vectorSize1;
-		for (int i=0;i<shortSize;i++) {
-			shortStr += stringVector1[i];
-		}
+		for (int i=0;i<stringVector2.size();i++) longStr += stringVector2[i];
+		for (int i=0;i<stringVector1.size();i++) shortStr += stringVector1[i];
 	}
-	
+
 	// The vector of type string will look something like: "a", "AaA", "aA"
 	// Convert to lowercase to compare
 	convertToLowerCase(longStr);
 	convertToLowerCase(shortStr);
 
-	// Loop testing with each letter of the shorter string
-	for (int i=0;i<shortSize;i++) {
+	// All of the characters from the smaller string must appear in the larger one
+	// Create an int array to keep track of character a-z occurances
+	// Initialize all values in the array to zero
+	int characterCount[26];
+	for (int i=0;i<26;i++) characterCount[i] = 0;
 
-		// Select a letter from the shorter string for comparison and count it's occurances
-		char letter = shortStr[i];
-		int letterOccurances = 0;
-
-		// Loop through the longer string with the selected letter from the shorter string
-		// If the letter is found, increment the number of letter occurances
-		for (int j=0;i<longSize;i++) {
-			if (longStr[j]==letter) letterOccurances++;
-		}
-
-		// If there is no occurance of the letter in the longer string, return false
-		if (letterOccurances==0) return false;
+	// Use ascii values to increment array positions corresponding to each letter in the long string
+	for (int i=0;i<longStr.size();i++) {
+		int x = static_cast<int>(longStr[i]);
+		characterCount[x-97]++;
 	}
 
-	return false;
+	// Move throught the short string, convert characters to ascii, and compare to the array
+	// If the character position in the array has not already been set, then return false
+	for (int i=0;i<shortStr.size();i++) {
+		int x = static_cast<int>(shortStr[i]);
+		if (characterCount[x-97]==0) return false;
+	}
+
+	return true;
 }
 
 bool FindPalindrome::add(const string & value)
