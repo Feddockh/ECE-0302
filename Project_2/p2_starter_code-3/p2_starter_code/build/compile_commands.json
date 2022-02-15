@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/FindPalindrome-main.dir/FindPalindrome_main.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome_main.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome_main.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/FindPalindrome-main.dir/FindPalindrome.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/FindPalindrome-tests.dir/FindPalindrome.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/FindPalindrome-tests.dir/FindPalindrome_test.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome_test.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_2/p2_starter_code-3/p2_starter_code/FindPalindrome_test.cpp"
+}
+]

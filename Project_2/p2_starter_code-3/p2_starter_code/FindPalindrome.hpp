@@ -8,8 +8,8 @@ class FindPalindrome{
 
 private:
 	// private stuff that you define and implement goes here...
-	std::vector<std::string> vectorOfStrings;
-	std::vector< std::vector<std::string> > palindromes;
+	std::vector<std::string> wordBag;
+	std::vector< std::vector<std::string> > palindromesBag;
 	int numberOfPalindromes;
 
 	// ...
@@ -49,7 +49,7 @@ public:
 	 @post  The instance contains no words, and the number of
 	   sentence palindromes is 0. */
 	 void clear();
-	 
+	
 	/** Adds a new string to this FindPalindrome instance and computes the
 	   number of palindrome sentences possible. Note that the new string must
 	   be unique per the definition in the project description.

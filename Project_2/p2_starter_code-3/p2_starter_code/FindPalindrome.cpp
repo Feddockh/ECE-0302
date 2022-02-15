@@ -33,14 +33,17 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 	// The base case of the recursive call will skip past this loop because size = 0
 	for (int i=0;i<size;i++) {
 
-		// Create new string vectors to copy the vectors we are about to modify
+		// Create two new string vectors which we can modify and use
 		vector<string> newCandidateStringVector = candidateStringVector;
-		vector<string> newCurrentStringVector = currentStringVector;
+		vector<string> newCurrentStringVector;
+		
+		// Add element i from the current string vector to the candidate string vector
+		newCandidateStringVector.push_back(currentStringVector[i]);
 
-		// Add the last element from the current string vector to the candidate string vector
-		// Delete the last element of the current string vector
-		newCandidateStringVector.push_back(newCurrentStringVector.back());
-		newCurrentStringVector.pop_back();
+		// Copy over all elements but i to the new current string vector
+		for (int j=0;j<size;j++) {
+			if (j!=i) newCurrentStringVector.push_back(currentStringVector[j]);
+		}
 		
 		// Recursively call the function with the modified vectors
 		recursiveFindPalindromes(newCandidateStringVector, newCurrentStringVector);
@@ -49,15 +52,19 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 	// Now we are past the function call and in the base case
 	if (size==0) {
 
+		//Implement cut test 1 here to potentially save time
+		if (!cutTest1(candidateStringVector)) return;
+
 		// We want to concatenate the candidate vector of strings that we have to a string
 		string candiate;
 		for (int i=0;i<candidateStringVector.size();i++) {
 			candiate.append(candidateStringVector[i]);
 		}
 
-		// Test to see if the candidate string is a palindrome
+		// If the candidate string is a palindrome, add it to the vector of vector strings
 		if (isPalindrome(candiate)) {
-			palindromes.push_back(candidateStringVector);
+			palindromesBag.push_back(candidateStringVector);
+			numberOfPalindromes++;
 		}
 	}
 
@@ -85,12 +92,12 @@ bool FindPalindrome::isPalindrome(string currentString) const
 
 FindPalindrome::FindPalindrome()
 {
-	// TODO need to implement this...
+	numberOfPalindromes = 0;
 }
 
 FindPalindrome::~FindPalindrome()
 {
-	// TODO need to implement this...
+	clear();
 }
 
 int FindPalindrome::number() const
@@ -100,17 +107,16 @@ int FindPalindrome::number() const
 
 void FindPalindrome::clear()
 {
-	palindromes.clear();
-	vectorOfStrings.clear();
+	palindromesBag.clear();
+	wordBag.clear();
+	numberOfPalindromes = 0;
 }
 
 bool FindPalindrome::cutTest1(const vector<string> & stringVector)
 {
-	// Get the number of strings
-	// Use the number of strings to concatenate all of the strings
-	int vectorSize = stringVector.size();
+	// Concatenate all of the strings into str
 	string str;
-	for (int i=0;i<vectorSize;i++) {
+	for (int i=0;i<stringVector.size();i++) {
 		str += stringVector[i];
 	}
 
@@ -118,36 +124,40 @@ bool FindPalindrome::cutTest1(const vector<string> & stringVector)
 	// Convert to lowercase to compare
 	convertToLowerCase(str);
 
-	// This bool will be used later for odd string length testing
-	bool oddNum = false;
+	// Create an int array to keep track of character a-z occurances
+	// Initialize all values in the array to zero
+	int characterCount[26];
+	for (int i=0;i<26;i++) characterCount[i] = 0;
 
-	// Loop testing with each letter of the string
-	int strSize = str.size();
-	for (int i=0;i<strSize;i++) {
-
-		// Select a letter for comparison and count it's occurances
-		char letter = str[i];
-		int letterOccurances = 0;
-
-		// Loop through the string with the selected letter
-		// If the letter is founc, increment the number of letter occurances
-		for (int j=0;i<strSize;i++) {
-			if (str[j]==letter) letterOccurances++;
-		}
-
-		// If the number is even, each letter should be repeated an even number of times
-		// If the number is odd, only one letter should be repeated an odd number of times
-		if (strSize%2==0) {
-			if (letterOccurances%2!=0) return false;
-		} else {
-			if (oddNum) return false;
-			if (letterOccurances%2!=0) oddNum = true;
-		}
+	// Use ascii values to increment positions in the array corresponding to the letter
+	int size = str.size();
+	for (int i=0;i<size;i++) {
+		int x = static_cast<int>(str[i]);
+		characterCount[x-97]++;
 	}
 
+	// Determine if the length of the array is even or odd
+	bool lengthIsEven = (size%2==0);
+
+	//Count the number of odd numbers in the character array
+	int oddNums = 0;
+	for (int i=0;i<26;i++) {
+
+		// Tally all of the odd numbers from the character array
+		oddNums += (characterCount[i]%2==1);
+
+		// If the length is even, each letter should be repeated an even number of times
+		if (oddNums!=0 && lengthIsEven) return false;
+
+		// If the number is odd, only one letter should be repeated an odd number of times
+		if (oddNums>1 && !lengthIsEven) return false;
+	}
+
+	// If all tests are passed return true
 	return true;
 }
 
+// TODO redo this test with a similar method to the first one
 bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
                               const vector<string> & stringVector2)
 {
@@ -216,21 +226,64 @@ bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
 
 bool FindPalindrome::add(const string & value)
 {
-	vectorOfStrings.push_back(value);
+	// Testing whether the string has valid characters using ascii values
+	for (int i=0;i<value.size();i++) {
+		int x = static_cast<int>(value[i]);
+		if (x<65 || (x>90 && x<97) || x>122) return false;
+	}
+
+	//Testing whether a word already exists in the bag
+	for (int i=0;i<wordBag.size();i++) {
+		if (value == wordBag[i]) return false;
+	}
+
+	// If the string is valid, add it to the word bag
+	wordBag.push_back(value);
+
+	// Clear the current palindromes
+	palindromesBag.clear();
+
+	// Recalculate the palindromes
+	vector<string> candidateStringVector;
+	recursiveFindPalindromes(candidateStringVector, wordBag);
+
 	return true;
 }
 
 bool FindPalindrome::add(const vector<string> & stringVector)
 {
+	// Testing whether each string in the vector has valid characters using ascii values
 	for (int i=0;i<stringVector.size();i++) {
-		vectorOfStrings.push_back(stringVector[i]);
+		string value = stringVector[i];
+		for (int j=0;j<value.size();j++) {
+			int x = static_cast<int>(value[j]);
+			if (x<65 || (x>90 && x<97) || x>122) return false;
+		}
 	}
+
+	//Testing whether a word already exists in the bag
+	for (int i=0;i<stringVector.size();i++) {
+		for (int j=0;j<wordBag.size();j++) {
+			if (stringVector[i] == wordBag[j]) return false;
+		}
+	}
+
+	// If the vector of strings is valid, add it to the vector
+	for (int i=0;i<stringVector.size();i++) {
+		wordBag.push_back(stringVector[i]);
+	}
+
+	// Clear the current palindromes
+	palindromesBag.clear();
+
+	// Recalculate the palindromes
+	vector<string> candidateStringVector;
+	recursiveFindPalindromes(candidateStringVector, wordBag);
+
 	return true;
 }
 
 vector< vector<string> > FindPalindrome::toVector() const
 {
-	// TODO need to implement this...
-	vector<vector<string>> returnThingie;
-	return returnThingie;
+	return palindromesBag;
 }
