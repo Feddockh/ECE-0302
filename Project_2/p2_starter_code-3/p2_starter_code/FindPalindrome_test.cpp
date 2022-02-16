@@ -39,13 +39,15 @@ TEST_CASE("Test FindPalindrome add (vector string)", "[FindPalindrome]" ) {
 TEST_CASE("Test FindPalindrome recursiveFindPalindromes", "[FindPalindrome]" ) {
 	FindPalindrome b;
 	// Murder for a jar of red rum
-	std::vector<std::string> test = {"rum", "a", "jar", "Murder", "of", "red", "for"};
+	std::vector<std::string> test = {"red", "a", "jar", "Murder", "of", "rum", "for"};
 	REQUIRE(b.add(test));
 	std::vector<std::vector<std::string>> result = b.toVector();
 	std::vector<std::string> ans1 = {"Murder", "for", "a", "jar", "of", "red", "rum"};
-	REQUIRE(result.front() == ans1);
 	std::vector<std::string> ans2 = {"red", "rum", "for", "a", "jar", "of", "Murder"};
-	REQUIRE(result.back() == ans2);
+	bool front = result.front()==ans1 || result.front()==ans2;
+	bool back = result.back()==ans1 || result.back()==ans2;
+	REQUIRE(front);
+	REQUIRE(back);
 	REQUIRE(b.number()==2);
 
 	b.clear();

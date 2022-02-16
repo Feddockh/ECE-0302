@@ -29,8 +29,24 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 	// Create an int to keep track of our current string vector's size
 	int vectorBagSize = currentStringVector.size();
 
-	// Implemet cut test 2 here to potentially save time
-	if (!cutTest2(candidateStringVector, currentStringVector));
+	// Test the size for the base case
+	if (vectorBagSize==0) {
+
+		// We want to concatenate the candidate vector of strings that we have to a string
+		string candiateStr;
+		for (int i=0;i<candidateStringVector.size();i++) {
+			candiateStr.append(candidateStringVector[i]);
+		}
+
+		// If the candidate string is a palindrome, add it to the vector of vector strings
+		if (isPalindrome(candiateStr)) {
+			palindromesBag.push_back(candidateStringVector);
+			numberOfPalindromes++;
+		}
+
+		// Return once the base case is completed
+		return;
+	}
 
 	// Loop through adding each of the string vectors to the candidate string vector
 	// The base case of the recursive call will skip past this loop because size = 0
@@ -47,31 +63,15 @@ void FindPalindrome::recursiveFindPalindromes(vector<string>
 		for (int j=0;j<vectorBagSize;j++) {
 			if (j!=i) newCurrentStringVector.push_back(currentStringVector[j]);
 		}
-		
-		// Recursively call the function with the modified vectors
-		recursiveFindPalindromes(newCandidateStringVector, newCurrentStringVector);
-	}
 
-	// Now we are past the function call and in the base case
-	if (vectorBagSize==0) {
+		// Implemet cut test 2 here to potentially save time
+		if (cutTest2(newCandidateStringVector, newCurrentStringVector)) {
 
-		//Implement cut test 1 here to potentially save time
-		if (!cutTest1(candidateStringVector)) return;
+			// Recursively call the function with the modified vectors
+			recursiveFindPalindromes(newCandidateStringVector, newCurrentStringVector);
 
-		// We want to concatenate the candidate vector of strings that we have to a string
-		string candiateStr;
-		for (int i=0;i<candidateStringVector.size();i++) {
-			candiateStr.append(candidateStringVector[i]);
-		}
-
-		// If the candidate string is a palindrome, add it to the vector of vector strings
-		if (isPalindrome(candiateStr)) {
-			palindromesBag.push_back(candidateStringVector);
-			numberOfPalindromes++;
 		}
 	}
-
-	return;
 }
 
 // private function to determine if a string is a palindrome (given, you
@@ -160,20 +160,27 @@ bool FindPalindrome::cutTest1(const vector<string> & stringVector)
 	return true;
 }
 
-// TODO redo this test with a similar method to the first one
 bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
                               const vector<string> & stringVector2)
 {
 	// Determine which string is longer
 	// Set longer and shorter strings with the concatenated strings from the vectors
 	string longStr, shortStr;
-	if (stringVector1.size()>stringVector2.size()) {
-		for (int i=0;i<stringVector1.size();i++) longStr += stringVector1[i];
-		for (int i=0;i<stringVector2.size();i++) shortStr += stringVector2[i];
-	} else {
-		for (int i=0;i<stringVector2.size();i++) longStr += stringVector2[i];
-		for (int i=0;i<stringVector1.size();i++) shortStr += stringVector1[i];
-	}
+
+	/*                            ERROR CAUGHT
+	* I had a really big bug that I tracked down to here and fixed
+	* I was determining the long and short strings by using the size function 
+	* on the vector<string> which was returning the number of words, but I was
+	* expecting the number of characters to be returned, so I should've been making
+	* the vector<string> a string first, and then using the .size() function 
+	*/
+
+	// Lets assume that the string vector 1 is larger first and make the strings
+	for (int i=0;i<stringVector1.size();i++) longStr += stringVector1[i];
+	for (int i=0;i<stringVector2.size();i++) shortStr += stringVector2[i];
+
+	// Test whether our guess was right, if not we can swap the data with that of the short string
+	if (longStr.size()<shortStr.size()) longStr.swap(shortStr);
 
 	// The vector of type string will look something like: "a", "AaA", "aA"
 	// Convert to lowercase to compare
@@ -192,8 +199,9 @@ bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
 		characterCount[x-97]++;
 	}
 
-	// Move throught the short string, convert characters to ascii, and compare to the array
+	// Move through the short string, convert characters to ascii, and compare to the array
 	// If the character position in the array has not already been set, then return false
+	bool cut = false;
 	for (int i=0;i<shortStr.size();i++) {
 		int x = static_cast<int>(shortStr[i]);
 		if (characterCount[x-97]==0) return false;
@@ -217,6 +225,10 @@ bool FindPalindrome::add(const string & value)
 
 	// If the string is valid, add it to the word bag
 	wordBag.push_back(value);
+
+	// Implement cut test 1 here to potentially save time
+	// If the letters in wordBag don't add up, then don't call the recursive function
+	if (!cutTest1(wordBag)) return true;
 
 	// Clear the current palindromes
 	palindromesBag.clear();
@@ -250,6 +262,10 @@ bool FindPalindrome::add(const vector<string> & stringVector)
 	for (int i=0;i<stringVector.size();i++) {
 		wordBag.push_back(stringVector[i]);
 	}
+
+	// Implement cut test 1 here to potentially save time
+	// If the letters in wordBag don't add up, then don't call the recursive function
+	if (!cutTest1(wordBag)) return true;
 
 	// Clear the current palindromes
 	palindromesBag.clear();
