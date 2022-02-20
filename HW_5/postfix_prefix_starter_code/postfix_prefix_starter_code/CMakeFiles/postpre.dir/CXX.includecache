@@ -6,16 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/algebraic_expressions.cpp
-string
--
-iostream
--
-cctype
--
-algebraic_expressions.hpp
-/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/algebraic_expressions.hpp
-
 /home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/algebraic_expressions.hpp
 string
 -
