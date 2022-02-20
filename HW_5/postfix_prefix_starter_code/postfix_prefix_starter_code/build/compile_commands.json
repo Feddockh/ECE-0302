@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -o CMakeFiles/postpre.dir/postpre.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/postpre.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/postpre.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -o CMakeFiles/postpre.dir/algebraic_expressions.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/algebraic_expressions.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/algebraic_expressions.cpp"
+}
+]

@@ -1,0 +1,5 @@
+/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/CMakeFiles/rebuild_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/CMakeFiles/edit_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/CMakeFiles/test.dir
+/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/CMakeFiles/submission.dir
+/home/feddockh/ECE_0302/ECE_0302/HW_5/postfix_prefix_starter_code/postfix_prefix_starter_code/CMakeFiles/postpre.dir
