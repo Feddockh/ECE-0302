@@ -220,7 +220,11 @@ bool FindPalindrome::add(const string & value)
 
 	//Testing whether a word already exists in the bag
 	for (int i=0;i<wordBag.size();i++) {
-		if (value == wordBag[i]) return false;
+		string lowerCaseValue = value;
+		string lowerCaseBag = wordBag[i];
+		convertToLowerCase(lowerCaseValue);
+		convertToLowerCase(lowerCaseBag);
+		if (lowerCaseValue == lowerCaseBag) return false;
 	}
 
 	// If the string is valid, add it to the word bag
@@ -230,8 +234,9 @@ bool FindPalindrome::add(const string & value)
 	// If the letters in wordBag don't add up, then don't call the recursive function
 	if (!cutTest1(wordBag)) return true;
 
-	// Clear the current palindromes
+	// Clear the current palindromes and reset the number of palindromes to 0
 	palindromesBag.clear();
+	numberOfPalindromes = 0;
 
 	// Recalculate the palindromes
 	vector<string> candidateStringVector;
@@ -251,10 +256,27 @@ bool FindPalindrome::add(const vector<string> & stringVector)
 		}
 	}
 
-	//Testing whether a word already exists in the bag
+	// Test whether there are duplicates within the string vector
 	for (int i=0;i<stringVector.size();i++) {
+		string lowerCaseValue1 = stringVector[i];
+		convertToLowerCase(lowerCaseValue1);
+		for (int j=0;j<stringVector.size();j++) {
+			if (i!=j) {
+				string lowerCaseValue2 = stringVector[j];
+				convertToLowerCase(lowerCaseValue2);
+				if (lowerCaseValue1 == lowerCaseValue2) return false;
+			}
+		}
+	}
+
+	// Testing whether a word already exists in the bag
+	for (int i=0;i<stringVector.size();i++) {
+		string lowerCaseValue = stringVector[i];
+		convertToLowerCase(lowerCaseValue);
 		for (int j=0;j<wordBag.size();j++) {
-			if (stringVector[i] == wordBag[j]) return false;
+			string lowerCaseBag = wordBag[j];
+			convertToLowerCase(lowerCaseBag);
+			if (lowerCaseValue == lowerCaseBag) return false;
 		}
 	}
 
@@ -267,8 +289,9 @@ bool FindPalindrome::add(const vector<string> & stringVector)
 	// If the letters in wordBag don't add up, then don't call the recursive function
 	if (!cutTest1(wordBag)) return true;
 
-	// Clear the current palindromes
+	// Clear the current palindromes and reset the number of palindromes to 0
 	palindromesBag.clear();
+	numberOfPalindromes = 0;
 
 	// Recalculate the palindromes
 	vector<string> candidateStringVector;
