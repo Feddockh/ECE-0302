@@ -17,9 +17,19 @@ XMLParser::~XMLParser()
 {
 }  // end destructor
 
-// TODO: Implement the tokenizeInputString method
-bool XMLParser::tokenizeInputString(const std::string &inputString)
-{
+// Return false if invalid
+bool XMLParser::tokenizeInputString(const std::string &inputString) {
+
+	int length = inputString.length();
+
+	for (int i=0;i<length;i++) {
+
+		
+
+	}
+
+
+
 	return false;
 }  // end
 

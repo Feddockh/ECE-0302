@@ -1,6 +1,6 @@
 //  Adapted from Frank M. Carrano and Timothy M. Henry.
 
-/** ADT Stack implementation.
+/** ADT Link-Based Stack implementation.
     @file Stack.hpp  */
 #ifndef STACK_HPP
 #define STACK_HPP

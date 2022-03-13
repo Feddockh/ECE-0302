@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.cpp
+cstddef
+-
+Node.hpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.hpp
+
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.hpp
+Node.cpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.cpp
+
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Stack.cpp
+iostream
+-
+cstddef
+-
+Stack.hpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Stack.hpp
+Node.hpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.hpp
+
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Stack.hpp
+stdexcept
+-
+Node.hpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Node.hpp
+Stack.cpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Stack.cpp
+
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/mainStack.cpp
+iostream
+-
+Stack.hpp
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/Stack.hpp
+
