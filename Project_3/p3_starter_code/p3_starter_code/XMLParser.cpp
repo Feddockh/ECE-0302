@@ -56,10 +56,6 @@ bool XMLParser::tokenizeInputString(const std::string &inputString) {
 			
 			// Clasify the type of token
 			if (newToken.tokenString[1] == '?') {                 // If the second character is '?' it's a declaration
-				if (newToken.tokenString[tokenLength-2] != '?') { // Return false if second to last character is not '?'
-					clear();
-					return false;
-				}
 				newToken.tokenType = DECLARATION;
 			} else if (newToken.tokenString[1] == '/')            // If the second character is '/' it's an end tag
 				newToken.tokenType = END_TAG;
@@ -142,6 +138,9 @@ bool XMLParser::parseTokenizedInput() {
 		if (tokenizedInputVector[i].tokenType == CONTENT) continue; // Skip over content
 
 		if (tokenizedInputVector[i].tokenType == DECLARATION) { // Extract declaration tagName
+			if (token[length-2] != '?') { // Return false if second to last character is not '?'
+				return false;
+			}
 			int i = 2;
 			while (token[i] != ' ' && token[i] != '?' && i < length) {
 				tagName.push_back(token[i++]);

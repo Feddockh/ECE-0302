@@ -6,54 +6,98 @@
 
 using namespace std;
 
-// TODO Implement tests of your Stack class and XMLParser class here
+int static maxSize = 20;
 
-TEST_CASE( "Test Bag add", "[XMLParser]" )
-{
-	   INFO("Hint: testing Bag add()");
-		// Create a Bag to hold ints
-		Bag<int> intBag;
-		int testSize = 2;
-		int bagSize;
-		bool success;
-		for (int i=0; i<testSize; i++) {
-			success = intBag.add(i);
-			REQUIRE(success);
-			bagSize = intBag.size();
-			success = (bagSize == (i+1));
-			REQUIRE(success);
-		}
-}
+/******************************* TESTS FOR Stack *******************************/
 
-TEST_CASE( "Test Stack push", "[XMLParser]" )
-{
-	   INFO("Hint: testing Stack push()");
-		// Create a Stack to hold ints
-		Stack<int> intStack;
-		int testSize = 3;
-		int stackSize;
-		bool success;
-		for (int i=0; i<testSize; i++) {
-			success = intStack.push(i);
-			REQUIRE(success);
-			stackSize = intStack.size();
-			success = (stackSize == (i+1));
-			REQUIRE(success);
-		}
-}
+TEST_CASE( "Test Bag Add", "[XMLParser]" ) {
 
+	Bag<int> intBag;               // Define bag of ints
+	int size;                      // Define the size
+	bool success;                  // Define the outcome
 
-TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" )
-{
-	   INFO("Hint: tokenize single element test of XMLParse");
-		// Create an instance of XMLParse
-		XMLParser myXMLParser;
-		string testString = "<test>stuff</test>";
-		bool success;
-		success = myXMLParser.tokenizeInputString(testString);
+	for (int i=0; i<maxSize; i++) {    // Loop until max
+
+		success = intBag.add(i);   // Confirm items can be added to bag
 		REQUIRE(success);
+
+		size = intBag.size();      // Return the size of the bag
+		success = (size == (i+1)); // Confirm the number of items in the bag
+		REQUIRE(success);
+	}
 }
 
+TEST_CASE( "Test Stack Push", "[XMLParser]" ) {
+
+	Stack<int> intStack;            // Define stack of ints
+	int size;                       // Define the size
+	bool success;                   // Define the outcome
+
+	for (int i=0; i<maxSize; i++) { // Loop until max
+
+		success = intStack.push(i); // Confirm items can be pushed to the stack
+		REQUIRE(success);
+
+		size = intStack.size();     // Return the size of the stack
+		success = (size == (i+1));  // Confirm the size of the stack
+		REQUIRE(success);
+	}
+}
+
+TEST_CASE( "Test Stack Peek", "[XMLParser]" ) {
+
+	Stack<int> intStack;               // Define a stack of ints
+
+	for (int i=0; i<maxSize; i++) {    // Loop until max
+
+		intStack.push(i);              // Push items to stack
+
+		REQUIRE(intStack.peek() == i); // Confirm that peek works
+	}
+
+	intStack.clear();                  // Clear the stack
+
+	REQUIRE(intStack.peek() == NULL);  // Confirm that peek returns null when stack is empty
+}
+
+TEST_CASE( "Test Stack Pop", "[XMLParser]" ) {
+
+	Stack<int> intStack;                         // Define a stack of ints
+
+	for (int i=0; i<maxSize; i++) {              // Loop until max
+		
+		intStack.push(i);                        // Push items to stack
+	}
+
+	for (int i=0; i<maxSize; i++) {              // Loop until max
+
+		REQUIRE(intStack.peek() == maxSize-i-1); // Confirm that peek works
+
+		REQUIRE(intStack.pop());                 // Confirm we can pop items from stack
+	}
+
+	REQUIRE(!intStack.pop());                    // Confirm that we cannot pop when the stack is empty
+}
+
+TEST_CASE( "Test Stack Size, Clear, and isEmpty", "[XMLParser]" ) {
+
+	Stack<int> intStack;              // Define a stack of ints
+	int size;                         // Define the size
+
+	for (int i=0; i<maxSize; i++) {   // Loop until max
+		
+		intStack.push(i);             // Push items to stack
+
+		size = intStack.size();       // Get the size
+		REQUIRE(size == i+1);         // Confirm the size
+
+		REQUIRE(!intStack.isEmpty()); // Confirm that the stack isn't empty
+	}
+
+	intStack.clear();                 // Clear the stack
+
+	REQUIRE(intStack.isEmpty());      // Confirm that the stack is now empty
+}
 
 TEST_CASE( "Test Stack handout-0", "[XMLParser]" )
 {
@@ -78,7 +122,6 @@ TEST_CASE( "Test Stack handout-0", "[XMLParser]" )
         REQUIRE(intStack.isEmpty() == true);
 }
 
-
 TEST_CASE( "Test Stack handout-1", "[XMLParser]" )
 {
 	   Stack<char> charStack;
@@ -100,6 +143,77 @@ TEST_CASE( "Test Stack handout-1", "[XMLParser]" )
        charStack.clear();
        REQUIRE(charStack.isEmpty() == true);      
 }
+
+/******************************* TESTS FOR XMLParser *******************************/
+
+TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
+
+	XMLParser myXMLParser;                                                  // Define XMLParser
+
+	INFO("Test valid string 1");
+	string testString = "<test>stuff</test>";                               // Define a valid test string
+	REQUIRE(myXMLParser.tokenizeInputString(testString));                   // Confirm that a valid string can be parsed
+	std::vector<TokenStruct> result = {                                     // Define the expected result
+		TokenStruct{StringTokenType::START_TAG, std::string("test")},
+		TokenStruct{StringTokenType::CONTENT, std::string("stuff")},
+		TokenStruct{StringTokenType::END_TAG, std::string("test")}};
+	std::vector<TokenStruct> output = myXMLParser.returnTokenizedInput();    // Return the vector from the object
+	REQUIRE(result.size() == output.size());                                 // Check that the sizes of the vectors match
+	for (int i = 0; i < result.size(); i++) {                                // Check that each token matches the expected token
+		REQUIRE(result[i].tokenType == output[i].tokenType);
+		REQUIRE(result[i].tokenString.compare(output[i].tokenString) == 0);
+	}
+
+	myXMLParser.clear();                                                     // Clear the object
+
+	INFO("Test valid string 2");
+	testString = "<?declaration?><test><test2><test3/></test2>stuff</test>"; // Define a valid test string
+	REQUIRE(myXMLParser.tokenizeInputString(testString));                    // Confirm that a valid string can be parsed
+	result = { // Define the expected result
+		TokenStruct{StringTokenType::DECLARATION, std::string("declaration")},
+		TokenStruct{StringTokenType::START_TAG, std::string("test")},
+		TokenStruct{StringTokenType::START_TAG, std::string("test2")},
+		TokenStruct{StringTokenType::EMPTY_TAG, std::string("test3")},
+		TokenStruct{StringTokenType::END_TAG, std::string("test2")},
+		TokenStruct{StringTokenType::CONTENT, std::string("stuff")},
+		TokenStruct{StringTokenType::END_TAG, std::string("test")}};
+	output = myXMLParser.returnTokenizedInput();                              // Return the vector from the object
+	REQUIRE(result.size() == output.size());                                  // Check that the sizes of the vectors match
+	for (int i = 0; i < result.size(); i++) {                                 // Check that each token matches the expected token
+		REQUIRE(result[i].tokenType == output[i].tokenType);
+		REQUIRE(result[i].tokenString.compare(output[i].tokenString) == 0);
+	}
+
+	myXMLParser.clear();                                                      // Clear the object
+
+	std::vector<std::string> invalidTests = {                                 // Define vector of possible invalid strings
+		{"<<test>stuff</test>"}, 
+		{"<test>>stuff</test>"},
+		{"<test>stuff<</test>"},
+		{"<test>stuff</test>>"},
+		{"test>stuff</test>"},
+		{"<teststuff</test>"},
+		{"<test>stuff/test>"},
+		{"<test>stuff</test"},
+	};
+
+	// TODO: Error on i = 6
+	INFO("Test invalid strings");
+	for (int i=0; i<invalidTests.size(); i++) {                               // Loop over all invalid strings in the vector
+		bool success = myXMLParser.tokenizeInputString(invalidTests[i]);      // Confirm that an invalid string cannot be tokenized
+		REQUIRE(!success); 
+		std::vector<TokenStruct> result;                                      // Define the expected result
+		std::vector<TokenStruct> output = myXMLParser.returnTokenizedInput(); // Return the vector from the object
+		REQUIRE(result.size() == output.size());                              // Check that the sizes of the vectors match
+		for (int i = 0; i < result.size(); i++) {                             // Check that each token matches the expected token
+			REQUIRE(result[i].tokenType == output[i].tokenType);
+			REQUIRE(result[i].tokenString.compare(output[i].tokenString) == 0);
+		}
+		myXMLParser.clear();
+	}
+}
+
+/*
 
 
 // You can assume that the beginning and the end of CONTENT will not be filled with whitespace
@@ -185,6 +299,8 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		ifstream myfile ("./TestFile.txt");
 		std::string inputString((std::istreambuf_iterator<char>(myfile) ), (std::istreambuf_iterator<char>()) );
 
+		//cout << inputString;
+
 		bool success;
 		success = myXMLParser.tokenizeInputString(inputString);
 		REQUIRE(success);
@@ -203,3 +319,5 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		REQUIRE(myXMLParser.containsElementName("color_swatch"));
 		REQUIRE(myXMLParser.frequencyElementName("color_swatch") == 15);
 }
+
+*/
