@@ -60,7 +60,7 @@ bool Stack<ItemType>::pop() {
 		headPtr = headPtr->getNext();
 	}
 
-	delete [] temp;                     // Delete the node stored in the temp pointer
+	delete temp;                        // Delete the node stored in the temp pointer
 	temp = nullptr;                     // Cap the temp pointer
 	currentSize--;                      // Decrement the size
 

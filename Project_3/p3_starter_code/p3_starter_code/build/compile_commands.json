@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/mainXMLParser.dir/XMLParser.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/mainXMLParser.dir/mainXMLParser.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/mainXMLParser.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/mainXMLParser.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/mainStack.dir/mainStack.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/mainStack.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/mainStack.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/XMLParser-tests.dir/XMLParser.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/XMLParser-tests.dir/XMLParser_test.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser_test.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/XMLParser_test.cpp"
+}
+]

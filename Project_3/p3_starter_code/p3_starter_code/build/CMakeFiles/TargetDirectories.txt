@@ -1,0 +1,7 @@
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/edit_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/test.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/submission.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/rebuild_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/mainXMLParser.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/mainStack.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_3/p3_starter_code/p3_starter_code/build/CMakeFiles/XMLParser-tests.dir
