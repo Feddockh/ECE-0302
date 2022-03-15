@@ -166,7 +166,9 @@ bool XMLParser::parseTokenizedInput() {
 
 		if (tokenizedInputVector[i].tokenType == END_TAG) {
 			int i = 2;
-			while (token[i] != '>' && token[i] != ' ' && i < length) {
+			while (token[i] != '>' && i < length) {
+				if (token[i] == ' ') // Return false if there is whitespace in the tagname
+					return false;
 				tagName.push_back(token[i++]);
 			}
 		}

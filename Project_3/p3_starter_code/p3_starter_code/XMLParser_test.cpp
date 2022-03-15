@@ -212,35 +212,53 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 	}
 }
 
-////////////////////
 TEST_CASE( "Test XMLParser parseTokenizedInput", "[XMLParser]" ) {
 
-	XMLParser myXMLParser;                                                  // Define XMLParser
+	/******************************* Valid Tests *******************************/
+	XMLParser myXMLParser;                                                   // Define XMLParser
 
 	INFO("Test valid string 1");
-	string testString = "<test>stuff</test>";                               // Define a valid test string
-	myXMLParser.tokenizeInputString(testString);                            // Tokenize input string
-	REQUIRE(myXMLParser.parseTokenizedInput());                             // Confirm that a valid string can be parsed
-	
-
+	string testString = "<test>stuff</test>";                                // Define a valid test string
+	myXMLParser.tokenizeInputString(testString);                             // Tokenize input string
+	REQUIRE(myXMLParser.parseTokenizedInput());                              // Confirm that a valid string can be parsed
 	myXMLParser.clear();                                                     // Clear the object
 
 	INFO("Test valid string 2");
 	testString = "<?declaration?><test><test2><test3/></test2>stuff</test>"; // Define a valid test string
 	myXMLParser.tokenizeInputString(testString);                             // Tokenize input string
 	REQUIRE(myXMLParser.parseTokenizedInput());                              // Confirm that a valid string can be parsed
-	
-
 	myXMLParser.clear();                                                     // Clear the object
 
-	int n = 28;
-	char invalidCharacters [n] = {'!', '\"', '#', '$', '%', '&', '\'', '(', 
+	char validCharacters [14] = {'0', '1', '2', '3', '4', '5', '6', '7',     // Test valid characters
+		'8', '9', '-', '_', '.', ':'};
+
+	INFO("Test valid tagname characters");
+	for (int i=0; i<14; i++) {                                               // Loop over all invalid strings in the vector
+
+		std::string test = "<test>stuff</test>";                             // Create a test string
+		test.insert(3,1,validCharacters[i]);                                 // Inserts an valid character into the tag
+		test.insert(16,1,validCharacters[i]);
+
+		myXMLParser.tokenizeInputString(test);                               // Tokenize string
+		bool success = myXMLParser.parseTokenizedInput();                    // Confirm that valid string can be parsed
+		REQUIRE(success); 
+		myXMLParser.clear();                                                 // Clear the object
+	}
+
+	INFO("Test valid declaration");
+	std::string test = "<?test?>";                                           // Create a test declaration
+	myXMLParser.tokenizeInputString(test);                                   // Tokenize string
+	REQUIRE(myXMLParser.parseTokenizedInput());                              // Confirm that valid string can be parsed
+	myXMLParser.clear();                                                     // Clear the object
+	
+
+	/******************************* Invalid Tests *******************************/
+	char invalidCharacters [28] = {'!', '\"', '#', '$', '%', '&', '\'', '(', // Test invalid characters
 		')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', 
 		']', '^', '{', '|', '}', '~', ' '};
 
-	// Whitespace valid bug
-	INFO("Test invalid strings");
-	for (int i=0; i<n; i++) {                                               // Loop over all invalid strings in the vector
+	INFO("Test invalid tagname characters");
+	for (int i=0; i<28; i++) {                                               // Loop over all invalid strings in the vector
 
 		std::string test = "<test>stuff</test>";                             // Create a test string
 		test.insert(3,1,invalidCharacters[i]);                               // Inserts an invalid character into the tag
@@ -251,9 +269,38 @@ TEST_CASE( "Test XMLParser parseTokenizedInput", "[XMLParser]" ) {
 		REQUIRE(!success); 
 		myXMLParser.clear();                                                 // Clear the object
 	}
+
+	myXMLParser.clear();                                                     // Clear the object
+
+	char startingInvalidCharacters2 [12] = {'0', '1', '2', '3', '4', '5',    // Test invalid starting characters
+		'6', '7', '8', '9', '-', '.'};
+
+	INFO("Test invalid starting tagname characters");
+	for (int i=0; i<12; i++) {                                               // Loop over all invalid starting characters
+
+		std::string test = "<test>stuff</test>";                             // Create a test string
+		test.insert(1,1,startingInvalidCharacters2[i]);                                 // Inserts an invalid starting character at the beginning
+		test.insert(14,1,startingInvalidCharacters2[i]);
+
+		myXMLParser.tokenizeInputString(test);                               // Tokenize string
+		bool success = myXMLParser.parseTokenizedInput();                    // Confirm that invalid string cannot be parsed
+		REQUIRE(!success); 
+		myXMLParser.clear();                                                 // Clear the object
+	}
+
+	INFO("Test invalid declaration");
+	test = "<?test>";                                                        // Create a test declaration
+	myXMLParser.tokenizeInputString(test);                                   // Tokenize string
+	REQUIRE(!myXMLParser.parseTokenizedInput());                             // Confirm that invalid string can be parsed
+	myXMLParser.clear();                                                     // Clear the object
+
+	INFO("Test invalid declaration 2");
+	test = "<test?>";                                                        // Create a test declaration
+	myXMLParser.tokenizeInputString(test);                                   // Tokenize string
+	REQUIRE(!myXMLParser.parseTokenizedInput());                             // Confirm that invalid string can be parsed
+	myXMLParser.clear();                                                     // Clear the object
 }
 
-/*
 // You can assume that the beginning and the end of CONTENT will not be filled with whitespace
 TEST_CASE( "Test XMLParser tokenizeInputString Handout-0", "[XMLParser]" )
 {
@@ -335,6 +382,8 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		ifstream myfile ("./TestFile.txt");
 		std::string inputString((std::istreambuf_iterator<char>(myfile) ), (std::istreambuf_iterator<char>()) );
 
+		// For some reason when I use the debugger here it messed up the file openning and fails the tests,
+		// but according to cout everything is how it should be
 		//cout << inputString;
 
 		bool success;
@@ -355,4 +404,3 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		REQUIRE(myXMLParser.containsElementName("color_swatch"));
 		REQUIRE(myXMLParser.frequencyElementName("color_swatch") == 15);
 }
-*/
