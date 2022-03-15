@@ -197,7 +197,6 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 		{"<test>stuff</test"},
 	};
 
-	// TODO: Error on i = 6
 	INFO("Test invalid strings");
 	for (int i=0; i<invalidTests.size(); i++) {                               // Loop over all invalid strings in the vector
 		bool success = myXMLParser.tokenizeInputString(invalidTests[i]);      // Confirm that an invalid string cannot be tokenized
@@ -212,9 +211,6 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 		myXMLParser.clear();
 	}
 }
-
-/*
-
 
 // You can assume that the beginning and the end of CONTENT will not be filled with whitespace
 TEST_CASE( "Test XMLParser tokenizeInputString Handout-0", "[XMLParser]" )
@@ -236,7 +232,6 @@ TEST_CASE( "Test XMLParser tokenizeInputString Handout-0", "[XMLParser]" )
 			REQUIRE(result[i].tokenString.compare(output[i].tokenString) == 0);
 		}
 }
-
 
 // You can assume that the beginning and the end of CONTENT will not be filled with whitespace
 TEST_CASE( "Test XMLParser tokenizeInputString Handout-1", "[XMLParser]" )
@@ -264,7 +259,6 @@ TEST_CASE( "Test XMLParser tokenizeInputString Handout-1", "[XMLParser]" )
 			REQUIRE(result[i].tokenString.compare(output[i].tokenString) == 0);
 		}
 }
-
 
 TEST_CASE( "Test XMLParser parseTokenizedInput Handout-0", "[XMLParser]" )
 {
@@ -319,5 +313,3 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		REQUIRE(myXMLParser.containsElementName("color_swatch"));
 		REQUIRE(myXMLParser.frequencyElementName("color_swatch") == 15);
 }
-
-*/

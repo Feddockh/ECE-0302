@@ -68,16 +68,17 @@ bool XMLParser::tokenizeInputString(const std::string &inputString) {
 			
 		} else {                                                  // We aren't beginning with a tag
 
-			if (x == '>') {                                       // Error check for nested '>'
-				clear();
-				return false;
-			}
-
 			if (x != ' ') {                                       // Begin content if not a blank space
 
 				newToken.tokenType = CONTENT;                     // Therefore we must be beginning with content
 
 				while (x != '<') {                                // Copy characters to token until '<' is reached
+
+					if (x == '>') {                               // Error check for nested '>'
+						clear();
+						return false;
+					}
+					
 					newToken.tokenString.push_back(x);            // Add character to the token's string
 					x = inputString[++i];                         // Set the next character after incrementing the counter
 				}
