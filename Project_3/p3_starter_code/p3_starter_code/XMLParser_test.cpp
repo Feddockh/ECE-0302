@@ -152,7 +152,7 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 
 	INFO("Test valid string 1");
 	string testString = "<test>stuff</test>";                               // Define a valid test string
-	REQUIRE(myXMLParser.tokenizeInputString(testString));                   // Confirm that a valid string can be parsed
+	REQUIRE(myXMLParser.tokenizeInputString(testString));                   // Confirm that a valid string can be tokenized
 	std::vector<TokenStruct> result = {                                     // Define the expected result
 		TokenStruct{StringTokenType::START_TAG, std::string("test")},
 		TokenStruct{StringTokenType::CONTENT, std::string("stuff")},
@@ -168,7 +168,7 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 
 	INFO("Test valid string 2");
 	testString = "<?declaration?><test><test2><test3/></test2>stuff</test>"; // Define a valid test string
-	REQUIRE(myXMLParser.tokenizeInputString(testString));                    // Confirm that a valid string can be parsed
+	REQUIRE(myXMLParser.tokenizeInputString(testString));                    // Confirm that a valid string can be tokenized
 	result = { // Define the expected result
 		TokenStruct{StringTokenType::DECLARATION, std::string("declaration")},
 		TokenStruct{StringTokenType::START_TAG, std::string("test")},
@@ -212,6 +212,48 @@ TEST_CASE( "Test XMLParser tokenizeInputString", "[XMLParser]" ) {
 	}
 }
 
+////////////////////
+TEST_CASE( "Test XMLParser parseTokenizedInput", "[XMLParser]" ) {
+
+	XMLParser myXMLParser;                                                  // Define XMLParser
+
+	INFO("Test valid string 1");
+	string testString = "<test>stuff</test>";                               // Define a valid test string
+	myXMLParser.tokenizeInputString(testString);                            // Tokenize input string
+	REQUIRE(myXMLParser.parseTokenizedInput());                             // Confirm that a valid string can be parsed
+	
+
+	myXMLParser.clear();                                                     // Clear the object
+
+	INFO("Test valid string 2");
+	testString = "<?declaration?><test><test2><test3/></test2>stuff</test>"; // Define a valid test string
+	myXMLParser.tokenizeInputString(testString);                             // Tokenize input string
+	REQUIRE(myXMLParser.parseTokenizedInput());                              // Confirm that a valid string can be parsed
+	
+
+	myXMLParser.clear();                                                     // Clear the object
+
+	int n = 28;
+	char invalidCharacters [n] = {'!', '\"', '#', '$', '%', '&', '\'', '(', 
+		')', '*', '+', ',', '/', ';', '<', '=', '>', '?', '@', '[', '\\', 
+		']', '^', '{', '|', '}', '~', ' '};
+
+	// Whitespace valid bug
+	INFO("Test invalid strings");
+	for (int i=0; i<n; i++) {                                               // Loop over all invalid strings in the vector
+
+		std::string test = "<test>stuff</test>";                             // Create a test string
+		test.insert(3,1,invalidCharacters[i]);                               // Inserts an invalid character into the tag
+		test.insert(16,1,invalidCharacters[i]);
+
+		myXMLParser.tokenizeInputString(test);                               // Tokenize string
+		bool success = myXMLParser.parseTokenizedInput();                    // Confirm that invalid string cannot be parsed
+		REQUIRE(!success); 
+		myXMLParser.clear();                                                 // Clear the object
+	}
+}
+
+/*
 // You can assume that the beginning and the end of CONTENT will not be filled with whitespace
 TEST_CASE( "Test XMLParser tokenizeInputString Handout-0", "[XMLParser]" )
 {
@@ -313,3 +355,4 @@ TEST_CASE( "Test XMLParser Final Handout-0", "[XMLParser]" )
 		REQUIRE(myXMLParser.containsElementName("color_swatch"));
 		REQUIRE(myXMLParser.frequencyElementName("color_swatch") == 15);
 }
+*/
