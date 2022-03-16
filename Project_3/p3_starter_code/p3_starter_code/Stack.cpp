@@ -43,8 +43,11 @@ bool Stack<ItemType>::push(const ItemType& newItem) {
 
 template<class ItemType>
 ItemType Stack<ItemType>::peek() const throw(logic_error) {
-	if (currentSize == 0) return NULL; // Return null if the stack is empty (TODO: check this later)
-	return headPtr->getItem();         // If the stack is not empty then return the item
+	if (currentSize == 0) {
+		throw logic_error("empty stack"); // Throw error if empty
+	} else {
+		return headPtr->getItem();         // If the stack is not empty then return the item
+	}
 }
 
 template<class ItemType>

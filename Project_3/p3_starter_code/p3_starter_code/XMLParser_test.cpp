@@ -57,7 +57,14 @@ TEST_CASE( "Test Stack Peek", "[XMLParser]" ) {
 
 	intStack.clear();                  // Clear the stack
 
-	REQUIRE(intStack.peek() == NULL);  // Confirm that peek returns null when stack is empty
+	bool success;
+	try {
+		intStack.peek();                // Try to peek an empty stack, exception should be caught
+		success = false;
+	} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty stack
+		success = true;
+	}
+	REQUIRE(success);                   // Confirm that peek returns null when stack is empty
 }
 
 TEST_CASE( "Test Stack Pop", "[XMLParser]" ) {

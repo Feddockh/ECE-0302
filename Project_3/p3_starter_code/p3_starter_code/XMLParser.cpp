@@ -110,7 +110,7 @@ static std::string deleteAttributes(std::string input) {
 		tag.push_back(x);             // Add the character to the tag
 		x = input[i++];               // Get the next character and then increment the counter
 	}
-
+	
 	if (input[length-2] == '/')       // If tag was an empty tag, add back the '/'
 		tag.push_back('/');
 	
@@ -149,6 +149,7 @@ bool XMLParser::parseTokenizedInput() {
 		}
 
 		if (tokenizedInputVector[i].tokenType == EMPTY_TAG) {
+			if (token[length-3] == '/' && token[length-2] == '/') return false; // This checks if the tag ends in two slashes //
 			token = deleteAttributes(token);
 			int i = 1;
 			while (token[i] != '/' && token[i] != ' ' && i < length) {
@@ -215,10 +216,14 @@ bool XMLParser::parseTokenizedInput() {
 
 		// If the type is end tag remove from the stack
 		if (tokenizedInputVector[i].tokenType == END_TAG) {
-			if (tagName != parseStack.peek()) // Check to see if the top entry tagName is equal
-				return false; // If not equal, return false
-			else
-				parseStack.pop(); // If equal tagNames, pop off the tagName
+			try {
+				if (tagName != parseStack.peek()) // Check to see if the top entry tagName is equal
+					return false; // If not equal, return false
+				else
+					parseStack.pop(); // If equal tagNames, pop off the tagName
+			} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty stack
+				return false; // If the stack is empty, then there is no match
+			}
 		}
 
 		// Add elements to bag here since they must be valid
@@ -228,6 +233,9 @@ bool XMLParser::parseTokenizedInput() {
 			elementNameBag.add(tagName);
 		}
 	}
+
+	// Make sure that the stack is now empty
+	if(!parseStack.isEmpty()) return false;
 
 	parsed = true;
 	return true;
