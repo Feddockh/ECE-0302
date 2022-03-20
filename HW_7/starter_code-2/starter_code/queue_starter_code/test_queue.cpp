@@ -47,3 +47,43 @@ TEST_CASE("Testing 1", "[queue]") {
   another_queue.dequeue();
   REQUIRE(another_queue.peekFront() == 62);
 }
+
+TEST_CASE("Testing 2", "[queue]") {
+  // a queue, holding ints, using a DynamicArrayList as the container
+  Queue<int, DynamicArrayList<int>> queue;
+
+  REQUIRE(queue.isEmpty() == 1);
+
+  int max = 10;
+  for (int i=0;i<max;i++) {
+    queue.enqueue(i);
+    REQUIRE(!queue.isEmpty());
+    REQUIRE(queue.peekFront() == 0);
+  }
+
+  Queue<int, DynamicArrayList<int>> another_queue;
+  another_queue = queue;
+
+  for (int i=0;i<max;i++) {
+    REQUIRE(another_queue.peekFront() == i);
+    another_queue.dequeue();
+  }
+  REQUIRE(another_queue.isEmpty());
+
+  bool success;
+  try {
+		another_queue.peekFront(); // Try to peek an empty queue, exception should be caught
+    success = false;
+	} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty queue
+    success = true;
+	}
+  REQUIRE(success);
+
+  try {
+		another_queue.dequeue(); // Try to peek an empty queue, exception should be caught
+    success = false;
+	} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty queue
+    success = true;
+	}
+  REQUIRE(success);
+}
