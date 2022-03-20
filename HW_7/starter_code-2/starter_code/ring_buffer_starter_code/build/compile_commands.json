@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/ring_buffer_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/test_ring_buffer.dir/test_ring_buffer.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/ring_buffer_starter_code/test_ring_buffer.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/ring_buffer_starter_code/test_ring_buffer.cpp"
+}
+]

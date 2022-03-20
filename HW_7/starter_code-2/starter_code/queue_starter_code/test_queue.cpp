@@ -54,7 +54,7 @@ TEST_CASE("Testing 2", "[queue]") {
 
   REQUIRE(queue.isEmpty() == 1);
 
-  int max = 10;
+  int max = 100;
   for (int i=0;i<max;i++) {
     queue.enqueue(i);
     REQUIRE(!queue.isEmpty());
@@ -70,20 +70,6 @@ TEST_CASE("Testing 2", "[queue]") {
   }
   REQUIRE(another_queue.isEmpty());
 
-  bool success;
-  try {
-		another_queue.peekFront(); // Try to peek an empty queue, exception should be caught
-    success = false;
-	} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty queue
-    success = true;
-	}
-  REQUIRE(success);
-
-  try {
-		another_queue.dequeue(); // Try to peek an empty queue, exception should be caught
-    success = false;
-	} catch (const std::exception& e) { // An exception will be returned when trying to peek an empty queue
-    success = true;
-	}
-  REQUIRE(success);
+  CHECK_THROWS_AS(another_queue.peekFront(), std::range_error); // Try to peek an empty queue, exception should be caught
+  CHECK_THROWS_AS(another_queue.dequeue(), std::range_error); // Try to dequeue an empty queue, exception should be caught
 }
