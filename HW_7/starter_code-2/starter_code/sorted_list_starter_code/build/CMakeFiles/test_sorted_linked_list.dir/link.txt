@@ -1,0 +1,1 @@
+/bin/x86_64-linux-gnu-g++-9  -g  -rdynamic CMakeFiles/test_sorted_linked_list.dir/test_sorted_linked_list.cpp.o  -o test_sorted_linked_list 

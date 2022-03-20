@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/sorted_list_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/test_sorted_linked_list.dir/test_sorted_linked_list.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/sorted_list_starter_code/test_sorted_linked_list.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/HW_7/starter_code-2/starter_code/sorted_list_starter_code/test_sorted_linked_list.cpp"
+}
+]
