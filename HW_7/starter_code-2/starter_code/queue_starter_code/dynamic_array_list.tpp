@@ -67,7 +67,9 @@ std::size_t DynamicArrayList<T>::getLength() {
 
 template <typename T>
 void DynamicArrayList<T>::insert(std::size_t position, const T& item) {
-  if (position > size) position = size;   // Check position isn't greater than size
+  if (position < 0) throw std::range_error("invalid position"); // Check that position is valid and above 0
+  if (position > size) throw std::range_error("invalid position"); // Check that position is valid and smaller or equal to size
+  
   if (size+1 >= capacity) capacity += 10; // Increment capacity if at max
 
   T *temp = data;
@@ -90,9 +92,9 @@ void DynamicArrayList<T>::insert(std::size_t position, const T& item) {
 
 template <typename T>
 void DynamicArrayList<T>::remove(std::size_t position) {
-  if (size == 0) throw std::logic_error("empty stack"); // Check that the stack is not empty
-  if (position < 0) throw std::logic_error("invalid position"); // Check that position is valid
-  if (position > size-1) throw std::logic_error("invalid position"); // Check that position is valid
+  if (size == 0) throw std::range_error("empty stack"); // Check that the stack is not empty
+  if (position < 0) throw std::range_error("invalid position"); // Check that position is valid
+  if (position >= size) throw std::range_error("invalid position"); // Check that position is valid
 
   if (size-1 <= capacity-10) capacity -= 10; // Decrement capacity if 10 less than capacity
   size--;                                    // Decrement size
@@ -119,15 +121,15 @@ void DynamicArrayList<T>::clear() {
 
 template <typename T>
 T DynamicArrayList<T>::getEntry(std::size_t position) {
-  if (size == 0) throw std::logic_error("empty stack"); // Check that the stack is not empty
-  if (position < 0) throw std::logic_error("invalid position"); // Check that position is valid
-  if (position > size-1) throw std::logic_error("invalid position"); // Check that position is valid
+  if (size == 0) throw std::range_error("empty stack"); // Check that the stack is not empty
+  if (position < 0) throw std::range_error("invalid position"); // Check that position is valid
+  if (position >= size) throw std::range_error("invalid position"); // Check that position is valid
   return data[position];
 }
 
 template <typename T>
 void DynamicArrayList<T>::setEntry(std::size_t position, const T& newValue) {
-  if (position < 0) throw std::logic_error("invalid position"); // Check that position is valid
-  if (position > size-1) throw std::logic_error("invalid position"); // Check that position is valid
+  if (position < 0) throw std::range_error("invalid position"); // Check that position is valid
+  if (position >= size) throw std::range_error("invalid position"); // Check that position is valid
   data[position] = newValue;
 }
