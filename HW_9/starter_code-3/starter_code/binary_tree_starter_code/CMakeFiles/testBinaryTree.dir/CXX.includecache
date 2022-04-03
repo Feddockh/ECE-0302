@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/BinaryTree.h
+cassert
+-
+TreeException.h
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/TreeException.h
+BinaryTree.tpp
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/BinaryTree.tpp
+
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/BinaryTree.tpp
+
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/TreeException.h
+exception
+-
+string
+-
+
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/test.cpp
+iostream
+-
+BinaryTree.h
+/home/feddockh/ECE_0302/ECE_0302/HW_9/starter_code-3/starter_code/binary_tree_starter_code/BinaryTree.h
+
