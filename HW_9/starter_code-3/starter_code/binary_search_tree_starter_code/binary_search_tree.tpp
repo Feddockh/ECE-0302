@@ -229,8 +229,11 @@ bool BinarySearchTree<KeyType, ItemType>::remove(KeyType key)
     // Remember that the left child is greater than the right child in BST
     // TODO: deal with child swapping to preserve order?
     if (curr->left != 0 && curr->right != 0) {
-        
-        if (curr_parent->left == curr) {       // If the current node is to the left of the parent node
+
+        if (curr_parent == 0) {                // If there is no parent, assign the left child directly to root
+            root = curr->left;
+            curr_parent = root;
+        } else if (curr_parent->left == curr) {// If the current node is to the left of the parent node
             curr_parent->left = curr->left;    // Set the parent node left pointer to the left child
         } else {                               // If the current node is to the right of the parent node
             curr_parent->right = curr->left;   // Set the parent node right pointer to the left child
@@ -259,11 +262,19 @@ bool BinarySearchTree<KeyType, ItemType>::remove(KeyType key)
 
 template <typename KeyType, typename ItemType>
 void BinarySearchTree<KeyType, ItemType>::inorder(Node<KeyType, ItemType>* curr,
-    Node<KeyType, ItemType>*& in, Node<KeyType, ItemType>*& parent)
+    ItemType *arr, int &i)
 {
-    // TODO 
-    // move right once
-    // move left as far as possible
+    // TODO
+    // The TODO was incredibly unclear and the prototype also didn't make sense,
+    // since it was a private function, I changed it so that I could use the function
+    // as an in order traversal method that used recursion to return the nodes in order
+    // and refill the array
+
+    if (curr != 0) {
+        inorder(curr->left, arr, i);
+        arr[i++] = curr->data;
+        inorder(curr->right, arr, i);
+    }
 }
 
 template <typename KeyType, typename ItemType>
@@ -297,9 +308,16 @@ void BinarySearchTree<KeyType, ItemType>::search(KeyType key,
 
 template<typename KeyType, typename ItemType>
 void BinarySearchTree<KeyType, ItemType>::treeSort(ItemType arr[], int size) {
-    // TODO: check for duplicate items in the input array
 
-    // TODO: use the tree to sort the array items
+    destroy(); // Get rid of any previous data in the tree
+
+    for (int i=0;i<size;i++) {
+        insert(arr[i], arr[i]); // Insert array items into a tree, duplicated items will be skipped by the function
+    }
 
     // TODO: overwrite input array values with sorted values
+    // Recursive inorder function traverses the binary tree in order
+    int index = 0;
+    inorder(root, arr, index);
+
 }
