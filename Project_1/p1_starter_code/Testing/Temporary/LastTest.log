@@ -1,0 +1,21 @@
+Start testing: Mar 31 14:51 EDT
+----------------------------------------------------------
+1/1 Testing: unittest
+1/1 Test: unittest
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/bitset-tests"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code
+"unittest" start time: Mar 31 14:51 EDT
+Output:
+----------------------------------------------------------
+===============================================================================
+All tests passed (4016 assertions in 12 test cases)
+
+<end of output>
+Test time =   3.01 sec
+----------------------------------------------------------
+Test Passed.
+"unittest" end time: Mar 31 14:51 EDT
+"unittest" time elapsed: 00:00:03
+----------------------------------------------------------
+
+End testing: Mar 31 14:51 EDT

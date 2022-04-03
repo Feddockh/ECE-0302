@@ -69,6 +69,13 @@ TEST_CASE( "Bitset(const std::string & value)", "[bitset]" ) {
     } while (binary != "11111111");
 }
 
+// Make sure that we can set with strings over 8 bits
+TEST_CASE( "Bitset with string over 8 bits", "[bitset]" ) {
+    std::string binary = "101010101"; // 9 bit test string
+    Bitset b(binary);
+    REQUIRE(b.good());
+}
+
 /*
 * This tests the destructor and just makes sure that the size goes back to 0
 * I can't check the value at each postiion without a runtime error because the memory isn't allocated

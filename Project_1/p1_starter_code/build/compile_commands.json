@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/bitset-tests.dir/bitset_test.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/bitset_test.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/bitset_test.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/bitset-tests.dir/bitset.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/bitset.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_1/p1_starter_code/bitset.cpp"
+}
+]

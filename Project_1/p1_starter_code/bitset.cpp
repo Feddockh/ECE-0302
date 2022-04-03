@@ -22,7 +22,7 @@
   //construction of a valid bitset initialized with a string of the form 00010000.
   //If the string contains any character other than 0 or 1, the bitset is invalid.
   Bitset::Bitset(const std::string & value) {
-      N = 8;
+      N = value.size();
       bits = new u_int8_t[N];
       for (int i=0;i<N;i++) {
           int bit;
