@@ -3,6 +3,38 @@
 
 #include "deque.hpp"
 
-// TODO
+// Test file is named "student-tests"
 
-TEST_CASE( "Tests", "[deque]" ) {}
+TEST_CASE( "isEmpty Test", "[deque]" ) {
+    Deque<int> D;
+
+    REQUIRE(D.isEmpty());
+}
+
+TEST_CASE( "pushFront Test", "[deque]" ) {
+    Deque<int> D;
+
+    int max = 20;
+
+    
+
+    REQUIRE(D.isEmpty());
+}
+
+TEST_CASE( "Empty Test", "[deque]" ) {
+    Deque<int> D;
+
+    REQUIRE(D.isEmpty());
+}
+
+TEST_CASE( "Empty Test", "[deque]" ) {
+    Deque<int> D;
+
+    REQUIRE(D.isEmpty());
+}
+
+TEST_CASE( "Empty Test", "[deque]" ) {
+    Deque<int> D;
+
+    REQUIRE(D.isEmpty());
+}
