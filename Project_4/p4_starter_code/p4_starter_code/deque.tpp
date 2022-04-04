@@ -7,36 +7,42 @@ bool Deque<T>::isEmpty() const noexcept {
 
 template <typename T>
 void Deque<T>::pushFront(const T & item) {
-    // How should I use: throw(std::bad_alloc("Allocation Error"));
-    list.insert(0, item);
+    if (!list.insert(1, item)) 
+        throw(std::bad_alloc());
 }
 
 template <typename T>
 void Deque<T>::popFront() {
-    if (list.isEmpty()) throw(std::runtime_error("Cannot pop from an empty list"));
-    list.remove(0);
+    if (list.isEmpty()) 
+        throw(std::runtime_error("Cannot pop from an empty list"));
+    if (!list.remove(1))
+        throw(std::runtime_error("Linked list error"));
 }
 
 template <typename T>
 T Deque<T>::front() const {
-    if (list.isEmpty()) throw(std::runtime_error("Cannot peek from an empty list"));
-    return list.getEntry(0);
+    if (list.isEmpty()) 
+        throw(std::runtime_error("Cannot peek from an empty list"));
+    return list.getEntry(1);
 }
 
 template <typename T>
 void Deque<T>::pushBack(const T & item) {
-    // How should I use: throw(std::bad_alloc("Allocation Error"));
-    list.insert(list.getLength(), item);
+    if (!list.insert(list.getLength() + 1, item)) // This is a plus one here I think!!!
+        throw(std::bad_alloc());
 }
 
 template <typename T>
 void Deque<T>::popBack() {
-    if (list.isEmpty()) throw(std::runtime_error("Cannot pop from an empty list"));
-    list.remove(list.getLength());
+    if (list.isEmpty()) 
+        throw(std::runtime_error("Cannot pop from an empty list"));
+    if (!list.remove(list.getLength()))
+        throw(std::runtime_error("Linked list error"));
 }
 
 template <typename T>
 T Deque<T>::back() const {
-    if (list.isEmpty()) throw(std::runtime_error("Cannot peek from an empty list"));
-    return list.getEntry(list.getLength()); // TODO: Might have to be length-1
+    if (list.isEmpty()) 
+        throw(std::runtime_error("Cannot peek from an empty list"));
+    return list.getEntry(list.getLength());
 }

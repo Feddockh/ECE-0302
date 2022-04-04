@@ -5,36 +5,26 @@
 
 // Test file is named "student-tests"
 
-TEST_CASE( "isEmpty Test", "[deque]" ) {
+TEST_CASE( "Test", "[deque]" ) {
     Deque<int> D;
 
     REQUIRE(D.isEmpty());
-}
-
-TEST_CASE( "pushFront Test", "[deque]" ) {
-    Deque<int> D;
 
     int max = 20;
 
-    
+    for (int i=0;i<max;i++) {
+        D.pushFront(i);
+        D.pushBack(i);
+    }
 
-    REQUIRE(D.isEmpty());
-}
+    REQUIRE(!D.isEmpty());
 
-TEST_CASE( "Empty Test", "[deque]" ) {
-    Deque<int> D;
-
-    REQUIRE(D.isEmpty());
-}
-
-TEST_CASE( "Empty Test", "[deque]" ) {
-    Deque<int> D;
-
-    REQUIRE(D.isEmpty());
-}
-
-TEST_CASE( "Empty Test", "[deque]" ) {
-    Deque<int> D;
+    for (int i=19;i>=0;i--) {
+        REQUIRE(D.front() == i);
+        D.popFront();
+        REQUIRE(D.back() == i); // Error here
+        D.popBack();
+    }
 
     REQUIRE(D.isEmpty());
 }

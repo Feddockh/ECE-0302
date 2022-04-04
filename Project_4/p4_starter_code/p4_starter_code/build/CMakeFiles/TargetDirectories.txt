@@ -1,0 +1,11 @@
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/rebuild_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/edit_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/test.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/submission.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/pathfinder.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/student-tests.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/CMakeFiles/compare.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib/CMakeFiles/rebuild_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib/CMakeFiles/edit_cache.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib/CMakeFiles/test.dir
+/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib/CMakeFiles/image.dir

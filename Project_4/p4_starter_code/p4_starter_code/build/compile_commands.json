@@ -1,0 +1,27 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib  -g   -std=gnu++11 -o CMakeFiles/pathfinder.dir/pathfinder.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib  -g   -std=gnu++11 -o CMakeFiles/student-tests.dir/test_deque.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/test_deque.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/test_deque.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib  -g   -std=gnu++11 -o CMakeFiles/compare.dir/compare.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/lib  -g   -std=gnu++11 -o CMakeFiles/image.dir/image.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib/image.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib/image.cpp"
+},
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/lib",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/lib  -g   -std=gnu++11 -o CMakeFiles/image.dir/lodepng.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib/lodepng.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/lib/lodepng.cpp"
+}
+]

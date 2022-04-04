@@ -1,0 +1,113 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "lib",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "lib",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "P4",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "compare::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-compare-Debug-c407329b0e3ec75bf061.json",
+					"name" : "compare",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "image::@306ed2d68c6501e8728f",
+					"jsonFile" : "target-image-Debug-08f63982ca433256cb03.json",
+					"name" : "image",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pathfinder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pathfinder-Debug-00e595f3aec510b21912.json",
+					"name" : "pathfinder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "student-tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-student-tests-Debug-5efb4a4d7eaa82b1bdee.json",
+					"name" : "student-tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "submission::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-submission-Debug-61aa85cb0d04514f92c4.json",
+					"name" : "submission",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build",
+		"source" : "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}
