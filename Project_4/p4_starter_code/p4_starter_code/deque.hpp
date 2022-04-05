@@ -9,6 +9,9 @@ class Deque: public AbstractDeque<T> {
 
   public:
 
+    // copy assignment
+    Deque& operator=(const Deque& x);
+
     /** Returns true if the deque is empty, else false
      */
     bool isEmpty() const noexcept;

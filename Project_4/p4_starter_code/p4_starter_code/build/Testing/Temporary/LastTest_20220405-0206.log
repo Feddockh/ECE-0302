@@ -1,0 +1,120 @@
+Start testing: Apr 04 22:06 EDT
+----------------------------------------------------------
+1/7 Testing: student-tests
+1/7 Test: student-tests
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/student-tests"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"student-tests" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+===============================================================================
+All tests passed (43 assertions in 1 test case)
+
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"student-tests" end time: Apr 04 22:06 EDT
+"student-tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/7 Testing: test00-compare
+3/7 Test: test00-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output00.png" "output00.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test00-compare" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+failed to open file for reading
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Failed.
+"test00-compare" end time: Apr 04 22:06 EDT
+"test00-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/7 Testing: test00
+2/7 Test: test00
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze00.png" "output00.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test00" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+<end of output>
+Test time =   0.50 sec
+----------------------------------------------------------
+Test Failed.
+"test00" end time: Apr 04 22:06 EDT
+"test00" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/7 Testing: test01
+4/7 Test: test01
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze01.png" "output01.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test01" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+<end of output>
+Test time =   0.54 sec
+----------------------------------------------------------
+Test Failed.
+"test01" end time: Apr 04 22:06 EDT
+"test01" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/7 Testing: test02
+6/7 Test: test02
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze02.png" "output02.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test02" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+<end of output>
+Test time =   0.56 sec
+----------------------------------------------------------
+Test Failed.
+"test02" end time: Apr 04 22:06 EDT
+"test02" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/7 Testing: test01-compare
+5/7 Test: test01-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output01.png" "output01.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test01-compare" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+failed to open file for reading
+<end of output>
+Test time =   0.57 sec
+----------------------------------------------------------
+Test Failed.
+"test01-compare" end time: Apr 04 22:06 EDT
+"test01-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/7 Testing: test02-compare
+7/7 Test: test02-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output02.png" "output02.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build
+"test02-compare" start time: Apr 04 22:06 EDT
+Output:
+----------------------------------------------------------
+failed to open file for reading
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Failed.
+"test02-compare" end time: Apr 04 22:06 EDT
+"test02-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Apr 04 22:06 EDT

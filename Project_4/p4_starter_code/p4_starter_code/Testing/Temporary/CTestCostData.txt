@@ -1,0 +1,10 @@
+student-tests 2 0.00159889
+test00 2 0.00194861
+test00-compare 2 0.00145278
+test01 2 0.00198524
+test01-compare 0 0
+test02 2 0.00149075
+test02-compare 0 0
+---
+test01-compare
+test02-compare

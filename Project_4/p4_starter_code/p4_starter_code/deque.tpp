@@ -28,7 +28,7 @@ T Deque<T>::front() const {
 
 template <typename T>
 void Deque<T>::pushBack(const T & item) {
-    if (!list.insert(list.getLength() + 1, item)) // This is a plus one here I think!!!
+    if (!list.insert(list.getLength() + 1, item)) // length + 1 because we are adding past the last item
         throw(std::bad_alloc());
 }
 

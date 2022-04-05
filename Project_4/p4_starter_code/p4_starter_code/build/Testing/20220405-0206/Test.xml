@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20220405-0206-Experimental"
+	Name="(empty)"
+	Generator="ctest-3.16.3"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Linux"
+	Hostname="ubuntu"
+	OSRelease="5.13.0-39-generic"
+	OSVersion="#44~20.04.1-Ubuntu SMP Thu Mar 24 16:43:35 UTC 2022"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="158"
+	ProcessorCacheSize="12288"
+	NumberOfLogicalCPU="2"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="923"
+	TotalPhysicalMemory="3889"
+	LogicalProcessorsPerPhysical="1"
+	ProcessorClockFrequency="2592"
+	>
+	<Testing>
+		<StartDateTime>Apr 04 22:06 EDT</StartDateTime>
+		<StartTestTime>1649124366</StartTestTime>
+		<TestList>
+			<Test>./student-tests</Test>
+			<Test>./test00-compare</Test>
+			<Test>./test00</Test>
+			<Test>./test01</Test>
+			<Test>./test02</Test>
+			<Test>./test01-compare</Test>
+			<Test>./test02-compare</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>student-tests</Name>
+			<Path>.</Path>
+			<FullName>./student-tests</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/student-tests</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.0170533</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/student-tests</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value encoding="base64" compression="gzip">eJyztaUq4HLMyVEoSS0uKVYoSCwuTk1R0DAxVgCxikoy8/OKFTLzFAzBChSSE4tTNbm4AErvIyU=</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test00-compare</Name>
+			<Path>.</Path>
+			<FullName>./test00-compare</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output00.png" "output00.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.0229562</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output00.png" "output00.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test00</Name>
+			<Path>.</Path>
+			<FullName>./test00</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze00.png" "output00.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Child aborted</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.499969</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze00.png" "output00.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test01</Name>
+			<Path>.</Path>
+			<FullName>./test01</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze01.png" "output01.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Child aborted</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.540305</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze01.png" "output01.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test02</Name>
+			<Path>.</Path>
+			<FullName>./test02</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze02.png" "output02.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Child aborted</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>0</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.557879</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/pathfinder "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze02.png" "output02.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>terminate called after throwing an instance of 'std::runtime_error'
+  what():  failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test01-compare</Name>
+			<Path>.</Path>
+			<FullName>./test01-compare</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output01.png" "output01.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.572601</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output01.png" "output01.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<Test Status="failed">
+			<Name>test02-compare</Name>
+			<Path>.</Path>
+			<FullName>./test02-compare</FullName>
+			<FullCommandLine>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output02.png" "output02.png"</FullCommandLine>
+			<Results>
+				<NamedMeasurement type="text/string" name="Exit Code">
+					<Value>Failed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Exit Value">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.160635</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/build/compare "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output02.png" "output02.png"</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value>failed to open file for reading
+</Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Apr 04 22:06 EDT</EndDateTime>
+		<EndTestTime>1649124367</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

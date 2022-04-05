@@ -22,7 +22,7 @@ TEST_CASE( "Test", "[deque]" ) {
     for (int i=19;i>=0;i--) {
         REQUIRE(D.front() == i);
         D.popFront();
-        REQUIRE(D.back() == i); // Error here
+        REQUIRE(D.back() == i);
         D.popBack();
     }
 
