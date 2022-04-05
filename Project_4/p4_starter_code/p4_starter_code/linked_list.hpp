@@ -48,13 +48,10 @@ public:
 private:
 
   // Pointer to the first node in the chain
-  Node<T> *headPtr;
+  Node<T> *headptr;
 
   // Number of items in the linked list
-  std::size_t itemCount;
-
-  // Locates a specific node in the linked list
-  Node<T> *getNodeAt(int position) const;
+  std::size_t list_length;
 };
 
 #include "linked_list.tpp"

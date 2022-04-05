@@ -1,151 +1,130 @@
 #include "image.h"
 #include "deque.hpp"
 #include <iostream>
+#include <string>
+#include <chrono> // DELETE LATER
+#include <thread> // DELETE LATER
 
-int compress(int col, int row);
-int compress(int position[]);
-void expand(int compress, int position[]);
-int expandRow(int compress);
-int expandCol(int compress);
-bool atEdge(int col, int row);
-bool atEdge(int position[]);
-bool atEdge(int compress);
-bool contains(Deque<int> list, int compress);
+// image(row, col)
+// Change color of cells after traversed, then change back to white after
 
-int width;
-int height;
+struct coordinates{
+  int row, col;
+  coordinates() {};
+  coordinates(int r, int c) {
+    row = r;
+    col = c;
+  }
+};
 
-int main(int argc, char *argv[]) {  
-  // TODO
+bool atEdge(coordinates);
+
+int width, height;
+
+int main(int argc, char *argv[]) {
+
+  // For timing
+  using namespace std::this_thread; // DELETE LATER
+  using namespace std::chrono; // DELETE LATER
 
   // A note on image cordinates, the origin is at the top left corner
   // Also, indexing begins at 0, not 1
   Image<Pixel> input = readFromFile(argv[1]);
+  Image<Pixel> output = readFromFile(argv[2]);
   width = input.width();
   height = input.height();
 
-  Deque<int> frontier;
-  Deque<int> explored;
+  // Explore coordinates at the front of the deque
+  // Add next coordinates to explore to the back of the deque
+  Deque<coordinates> frontier;
+  coordinates start, end;
 
   // Find the starting position
-  for (int row=0;row<height;row++) {
-    for (int col=0;col<width;col++) {
-      if (input(col,row) == RED) {
+  for (int col=0;col<width;col++) {
+    for (int row=0;row<height;row++) {
+      if (input(row,col) == RED) {
+        start.row = row;
+        start.col = col;
         std::cout << "red found" << std::endl;
-        std::cout << "row " << row << " col " << col << std::endl;
-        frontier.pushFront(compress(col,row));
+        frontier.pushFront(start);
       }
     }
   }
 
-  // Check that our compression/expansion system is working correctly
-  std::cout << "row " << expandRow(frontier.front())
-    << " col " << expandCol(frontier.front()) << std::endl;
-
-  // Begin breadth first search
-  while (!frontier.isEmpty()) {
+  bool success;
+  // Begin breadth-first-search
+  while (true) {
     
-    Deque<int> next;
+    // Check if the frontier deque is empty (no exits)
+    if (frontier.isEmpty()) {
+      success = false;
+      break;
+    }
 
-    // Check all current values in frontier for edges and move to explored after
-      // Save all of the valid and unexplored next positions to the back of the list
-    while (!frontier.isEmpty()) {
-      // Retrieve the column and row
-      int col = expandCol(frontier.front());
-      int row = expandRow(frontier.front());
+    // Check if the frontier value is at the edge (exit)
+    if (atEdge(frontier.front())) {
+      success = true;
+      end.row = frontier.front().row;
+      end.col = frontier.front().col;
+      break;
+    }
 
-      std::cout << "row " << row << " col " << col << std::endl;
+    // Collect all valid next positions in the specified order
+    coordinates x = frontier.front();
+    if (input(x.row-1,x.col) == WHITE)
+      frontier.pushBack(coordinates(x.row-1,x.col));
+    if (input(x.row+1,x.col) == WHITE)
+      frontier.pushBack(coordinates(x.row+1,x.col));
+    if (input(x.row,x.col-1) == WHITE)
+      frontier.pushBack(coordinates(x.row,x.col-1));
+    if (input(x.row,x.col+1) == WHITE)
+      frontier.pushBack(coordinates(x.row,x.col+1));
 
-      // Check whether the position is at an edge
-      if (atEdge(col,row)) {
-        std::cout << "at edge" << std::endl;
-        //return 0;
+    // Mark the current coordinate as explored using blue
+    input(x.row,x.col) = BLUE;
+    std::cout << "row " << x.row << " col " << x.col << std::endl;
+    frontier.popFront();
+
+    // Display output image in progress at 1 second intervals
+    writeToFile(input,"cycle.png"); // DELETE LATER
+    sleep_for(seconds(1)); // DELETE LATER
+  }
+
+  if (success) {
+
+    // Set start position as red and end position as green
+    input(start.row, start.col) = RED;
+    input(end.row, end.col) = GREEN;
+
+    writeToFile(input,"cycle.png"); // DELETE LATER
+
+    // Recolor all blue squares of input to white
+    for (int col=0;col<width;col++) {
+      for (int row=0;row<height;row++) {
+        if (input(row,col) == BLUE) input(row,col) = WHITE;
       }
-
-      // Collect all valid next positions in the specified order
-      if (input(col,row-1) == WHITE && !contains(explored,compress(col,row-1)))
-        next.pushBack(compress(col,row-1));
-      if (input(col,row+1) == WHITE && !contains(explored,compress(col,row+1)))
-        next.pushBack(compress(col,row+1));
-      if (input(col-1,row) == WHITE && !contains(explored,compress(col-1,row)))
-        next.pushBack(compress(col-1,row));
-      if (input(col+1,row) == WHITE && !contains(explored,compress(col+1,row)))
-        next.pushBack(compress(col+1,row));
-      
-      // Move position (compressed) to the explored list
-      explored.pushBack(frontier.front());
-      frontier.popFront();
     }
 
-    // Once all of the positions in frontier have been searched,
-    //  we can swap the next and frontier deques
-    //  next will be destroyed at the end of the loop
-    while(!next.isEmpty()) {
-      frontier.pushBack(next.front());
-      next.popFront();
+    // Check that the current input image matches the expected output image
+    bool match = true;
+    for (int col=0;col<width;col++) {
+      for (int row=0;row<height;row++) {
+        if (input(row,col) != output(row,col)) match = false;
+      }
     }
+
+    if (match) std::cout << "match" << std::endl;
+    else std::cout << "no match" << std::endl;
+
   }
-
 }
 
-bool contains(Deque<int> list, int compress) {
-  Deque<int> temp = list;
-  while (!temp.isEmpty()) {
-    if (temp.back() == compress) return true;
-    temp.popBack();
-  }
+
+bool atEdge(coordinates x) {
+  if (x.row == 0 || x.row == height-1) return true;
+  if (x.col == 0 || x.col == width-1) return true;
   return false;
 }
-
-int compress(int col, int row) {
-  int compress = row * width + col;
-  return compress;
-}
-
-int compress(int position[]) {
-  int col = position[0];
-  int row = position[1];
-  int compress = row * width + col;
-  return compress;
-}
-
-void expand(int compress, int position[]) {
-  position[0] = expandCol(compress);
-  position[1] = expandRow(compress);
-}
-
-int expandRow(int compress) {
-  int row = compress/width;
-  return row;
-}
-
-int expandCol(int compress) {
-  int col = compress%width;
-  return col;
-}
-
-bool atEdge(int col, int row) {
-  if (col == 0 || col == width) return true;
-  if (row == 0 || row == height) return true;
-  return false;
-}
-
-bool atEdge(int position[]) {
-  int col = position[0];
-  int row = position[1];
-  if (col == 0 || col == width) return true;
-  if (row == 0 || row == height) return true;
-  return false;
-}
-
-bool atEdge(int compress) {
-  int col = expandCol(compress);
-  int row = expandRow(compress);
-  if (col == 0 || col == width) return true;
-  if (row == 0 || row == height) return true;
-  return false;
-}
-
 
 
 
