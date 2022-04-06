@@ -53,10 +53,6 @@ iostream
 -
 string
 -
-chrono
--
-thread
--
 
 lib/image.h
 algorithm

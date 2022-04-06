@@ -2,8 +2,8 @@
 #include "deque.hpp"
 #include <iostream>
 #include <string>
-#include <chrono> // DELETE LATER
-#include <thread> // DELETE LATER
+//#include <chrono> // DELETE LATER
+//#include <thread> // DELETE LATER
 
 // image(row, col)
 // Change color of cells after traversed, then change back to white after
@@ -24,8 +24,8 @@ int width, height;
 int main(int argc, char *argv[]) {
 
   // For timing
-  using namespace std::this_thread; // DELETE LATER
-  using namespace std::chrono; // DELETE LATER
+  //using namespace std::this_thread; // DELETE LATER
+  //using namespace std::chrono; // DELETE LATER
 
   // A note on image cordinates, the origin is at the top left corner
   // Also, indexing begins at 0, not 1
@@ -51,13 +51,14 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  bool success;
   // Begin breadth-first-search
+  bool success;
   while (true) {
     
     // Check if the frontier deque is empty (no exits)
     if (frontier.isEmpty()) {
       success = false;
+      std::cout << "empty" << std::endl;
       break;
     }
 
@@ -82,19 +83,22 @@ int main(int argc, char *argv[]) {
 
     // Mark the current coordinate as explored using blue
     input(x.row,x.col) = BLUE;
-    std::cout << "row " << x.row << " col " << x.col << std::endl;
+    //std::cout << "row " << x.row << " col " << x.col << std::endl;
     frontier.popFront();
 
     // Display output image in progress at 1 second intervals
-    writeToFile(input,"cycle.png"); // DELETE LATER
-    sleep_for(seconds(1)); // DELETE LATER
+    //writeToFile(input,"cycle.png"); // DELETE LATER
+    //std::cout << "row " << x.row << " col " << x.col << std::endl;
+    //sleep_for(milliseconds(500)); // DELETE LATER
   }
+
+  // fix later, but the second test needs to be compared
 
   if (success) {
 
     // Set start position as red and end position as green
     input(start.row, start.col) = RED;
-    input(end.row, end.col) = GREEN;
+    //input(end.row, end.col) = GREEN;
 
     writeToFile(input,"cycle.png"); // DELETE LATER
 
@@ -125,43 +129,3 @@ bool atEdge(coordinates x) {
   if (x.col == 0 || x.col == width-1) return true;
   return false;
 }
-
-
-
-
-
-/* 
-problem.initial() returns the initial state of the problem
-problem.goal(state) returns true if state is the goal state, else false
-problem.actions(state) returns a list of states resulting from possible transitions from state (next state)
-
-
-Psuedocode for Bredth-First-Search
-
-function breadth_first_search (problem) {   // function returns a solution or failure
-  s = problem.initial()
-  if (problem.goal(s)) return s
-
-  frontier = fifo queue with s as the first element
-  explored = an empty set
-
-  while (true) {
-    if (frontier.empty()) return failure
-    s = pop next state from frontier
-    add s to explored
-    for (each state s_next in problem.actions(s)) {
-      if (s_next not in explored or frontier) {
-        if (problem.goal(s_next)) then return s_next
-        insert s_next into the frontier
-      }
-    }
-  }
-}
-
-
-Order of actions to be considered in breadth-first-search
-  1. previousRow(r-1,c)
-  2. nextRow(r+1,c)
-  3. previousColumn(r,c-1)
-  4. nextColumn(r,c+1)
-*/
