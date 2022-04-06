@@ -5,9 +5,7 @@
 //#include <chrono> // DELETE LATER
 //#include <thread> // DELETE LATER
 
-// image(row, col)
-// Change color of cells after traversed, then change back to white after
-
+// Coordinates datatype definition
 struct coordinates{
   int row, col;
   coordinates() {};
@@ -17,8 +15,11 @@ struct coordinates{
   }
 };
 
+// Functions
 bool atEdge(coordinates);
+bool cutTest(Image<Pixel>, coordinates);
 
+// Global height and width
 int width, height;
 
 int main(int argc, char *argv[]) {
@@ -29,8 +30,12 @@ int main(int argc, char *argv[]) {
 
   // A note on image cordinates, the origin is at the top left corner
   // Also, indexing begins at 0, not 1
+
+  // Read in the input and output images for later
   Image<Pixel> input = readFromFile(argv[1]);
   Image<Pixel> output = readFromFile(argv[2]);
+
+  // Store the width and height of the image to the global variables
   width = input.width();
   height = input.height();
 
@@ -53,6 +58,7 @@ int main(int argc, char *argv[]) {
 
   // Begin breadth-first-search
   bool success;
+  int i = 0;
   while (true) {
     
     // Check if the frontier deque is empty (no exits)
@@ -70,6 +76,12 @@ int main(int argc, char *argv[]) {
       break;
     }
 
+    // Use cutTest to eliminate any coordinates from the deque that have already been explored
+    if(cutTest(input,frontier.front())) {
+      frontier.popFront();
+      continue;
+    }
+
     // Collect all valid next positions in the specified order
     coordinates x = frontier.front();
     if (input(x.row-1,x.col) == WHITE)
@@ -81,24 +93,28 @@ int main(int argc, char *argv[]) {
     if (input(x.row,x.col+1) == WHITE)
       frontier.pushBack(coordinates(x.row,x.col+1));
 
-    // Mark the current coordinate as explored using blue
+    // Mark the current coordinate as explored using blue and pop from the deque
     input(x.row,x.col) = BLUE;
-    //std::cout << "row " << x.row << " col " << x.col << std::endl;
     frontier.popFront();
 
-    // Display output image in progress at 1 second intervals
-    //writeToFile(input,"cycle.png"); // DELETE LATER
-    //std::cout << "row " << x.row << " col " << x.col << std::endl;
+    // Display output image in progress
+    if (i > 1000) {
+      writeToFile(input,"cycle.png"); // DELETE LATER
+      std::cout << "row " << x.row << " col " << x.col << std::endl;
+      i = 0;
+    }
+    i++;
     //sleep_for(milliseconds(500)); // DELETE LATER
   }
 
   // fix later, but the second test needs to be compared
+  success = true;
 
   if (success) {
 
     // Set start position as red and end position as green
     input(start.row, start.col) = RED;
-    //input(end.row, end.col) = GREEN;
+    input(end.row, end.col) = GREEN;
 
     writeToFile(input,"cycle.png"); // DELETE LATER
 
@@ -123,9 +139,15 @@ int main(int argc, char *argv[]) {
   }
 }
 
-
 bool atEdge(coordinates x) {
   if (x.row == 0 || x.row == height-1) return true;
   if (x.col == 0 || x.col == width-1) return true;
   return false;
+}
+
+bool cutTest(Image<Pixel> input, coordinates x) {
+  if(input(x.row, x.col) == BLUE)
+    return true;
+  else 
+    return false;
 }
