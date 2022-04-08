@@ -1,44 +1,156 @@
-Start testing: Apr 04 22:07 EDT
+Start testing: Apr 07 20:48 EDT
 ----------------------------------------------------------
-1/7 Testing: student-tests
-1/7 Test: student-tests
+1/13 Testing: student-tests
+1/13 Test: student-tests
 Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/student-tests"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"student-tests" start time: Apr 04 22:07 EDT
+"student-tests" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
 ===============================================================================
 All tests passed (43 assertions in 1 test case)
 
 <end of output>
-Test time =   0.00 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"student-tests" end time: Apr 04 22:07 EDT
+"student-tests" end time: Apr 07 20:48 EDT
 "student-tests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/7 Testing: test00
-2/7 Test: test00
+2/13 Testing: test00
+2/13 Test: test00
 Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze00.png" "output00.png"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test00" start time: Apr 04 22:07 EDT
+"test00" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
-stop
+Solution Found
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test00" end time: Apr 07 20:48 EDT
+"test00" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/13 Testing: test00-compare
+3/13 Test: test00-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output00.png" "output00.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test00-compare" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Images identical.
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test00-compare" end time: Apr 07 20:48 EDT
+"test00-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/13 Testing: test01
+4/13 Test: test01
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze01.png" "output01.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test01" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+No Solution Found
+<end of output>
+Test time =   0.55 sec
+----------------------------------------------------------
+Test Passed.
+"test01" end time: Apr 07 20:48 EDT
+"test01" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/13 Testing: test01-compare
+5/13 Test: test01-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output01.png" "output01.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test01-compare" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Images identical.
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"test01-compare" end time: Apr 07 20:48 EDT
+"test01-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/13 Testing: test02
+6/13 Test: test02
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze02.png" "output02.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test02" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Solution Found
+<end of output>
+Test time =   0.62 sec
+----------------------------------------------------------
+Test Passed.
+"test02" end time: Apr 07 20:48 EDT
+"test02" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/13 Testing: test02-compare
+7/13 Test: test02-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output02.png" "output02.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test02-compare" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Images identical.
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"test02-compare" end time: Apr 07 20:48 EDT
+"test02-compare" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/13 Testing: test04
+8/13 Test: test04
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze04.png" "output04.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test04" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Error reading image from file
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test00" end time: Apr 04 22:07 EDT
-"test00" time elapsed: 00:00:00
+"test04" end time: Apr 07 20:48 EDT
+"test04" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/7 Testing: test00-compare
-3/7 Test: test00-compare
-Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output00.png" "output00.png"
+9/13 Testing: test05
+9/13 Test: test05
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze05.png" "output05.png"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test00-compare" start time: Apr 04 22:07 EDT
+"test05" start time: Apr 07 20:48 EDT
+Output:
+----------------------------------------------------------
+Solution Found
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test05" end time: Apr 07 20:48 EDT
+"test05" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/13 Testing: test05-compare
+10/13 Test: test05-compare
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output05.png" "output05.png"
+Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
+"test05-compare" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
 Images identical.
@@ -46,72 +158,57 @@ Images identical.
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test00-compare" end time: Apr 04 22:07 EDT
-"test00-compare" time elapsed: 00:00:00
+"test05-compare" end time: Apr 07 20:48 EDT
+"test05-compare" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/7 Testing: test01
-4/7 Test: test01
-Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze01.png" "output01.png"
+11/13 Testing: test07
+11/13 Test: test07
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze07.png" "output07.png"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test01" start time: Apr 04 22:07 EDT
+"test07" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
-stop
+Error - Invalid pixel colors in maze
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test01" end time: Apr 04 22:07 EDT
-"test01" time elapsed: 00:00:00
+"test07" end time: Apr 07 20:48 EDT
+"test07" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-5/7 Testing: test01-compare
-5/7 Test: test01-compare
-Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output01.png" "output01.png"
+12/13 Testing: test08
+12/13 Test: test08
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze00.png"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test01-compare" start time: Apr 04 22:07 EDT
+"test08" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
-failed to open file for reading
+Solution Found
+Error writing output file
 <end of output>
-Test time =   0.13 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
-Test Failed.
-"test01-compare" end time: Apr 04 22:07 EDT
-"test01-compare" time elapsed: 00:00:00
+Test Passed.
+"test08" end time: Apr 07 20:48 EDT
+"test08" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-6/7 Testing: test02
-6/7 Test: test02
-Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/maze02.png" "output02.png"
+13/13 Testing: test09
+13/13 Test: test09
+Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/pathfinder" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code"
 Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test02" start time: Apr 04 22:07 EDT
+"test09" start time: Apr 07 20:48 EDT
 Output:
 ----------------------------------------------------------
-stop
+Error reading image from file
 <end of output>
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"test02" end time: Apr 04 22:07 EDT
-"test02" time elapsed: 00:00:00
+"test09" end time: Apr 07 20:48 EDT
+"test09" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-7/7 Testing: test02-compare
-7/7 Test: test02-compare
-Command: "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/compare" "/home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code/tests/output02.png" "output02.png"
-Directory: /home/feddockh/ECE_0302/ECE_0302/Project_4/p4_starter_code/p4_starter_code
-"test02-compare" start time: Apr 04 22:07 EDT
-Output:
-----------------------------------------------------------
-failed to open file for reading
-<end of output>
-Test time =   0.13 sec
-----------------------------------------------------------
-Test Failed.
-"test02-compare" end time: Apr 04 22:07 EDT
-"test02-compare" time elapsed: 00:00:00
-----------------------------------------------------------
-
-End testing: Apr 04 22:07 EDT
+End testing: Apr 07 20:48 EDT

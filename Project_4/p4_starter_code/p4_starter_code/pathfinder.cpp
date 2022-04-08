@@ -216,6 +216,8 @@ Things to add:
 */
 
 /*
+try-catch format:
+
 try {
 } catch (const std::exception& e) {
 }
