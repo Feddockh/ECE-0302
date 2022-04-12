@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/home/feddockh/ECE_0302/ECE_0302/HW_10/priority_queue_heap_starter_code/priority_queue_heap_starter_code/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9    -g   -std=gnu++11 -o CMakeFiles/test_priority_queue.dir/test_priority_queue.cpp.o -c /home/feddockh/ECE_0302/ECE_0302/HW_10/priority_queue_heap_starter_code/priority_queue_heap_starter_code/test_priority_queue.cpp",
+  "file": "/home/feddockh/ECE_0302/ECE_0302/HW_10/priority_queue_heap_starter_code/priority_queue_heap_starter_code/test_priority_queue.cpp"
+}
+]
